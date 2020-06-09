@@ -18,7 +18,7 @@ public class UserDAO {
     }
 
     public User getUserById(UUID userId) {
-        User currentUser = jdbcTemplate.queryForObject("select * from users where id = ?", new Object[] {userId}, new UserMapper());
+        User currentUser = jdbcTemplate.queryForObject("select * from users where user_id = ?", new Object[] {userId}, new UserMapper());
         currentUser.setCreatedDecks(deckDAO.getAllDecksByCreatorId(userId));
 
         //TODO: get all decks liked by current user

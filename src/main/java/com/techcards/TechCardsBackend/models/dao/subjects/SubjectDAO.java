@@ -18,9 +18,9 @@ public class SubjectDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Subject getSubjectById(UUID id) {
-        Subject currentSubject = jdbcTemplate.queryForObject("select * from subjects where id = ?", new Object[] { id }, new SubjectMapper());
-        currentSubject.setDeckList(deckDAO.getAllDecksBySubjectId(id));
+    public Subject getSubjectById(UUID subjectId) {
+        Subject currentSubject = jdbcTemplate.queryForObject("select * from subjects where subject_id = ?", new Object[] { subjectId }, new SubjectMapper());
+        currentSubject.setDeckList(deckDAO.getAllDecksBySubjectId(subjectId));
         return currentSubject;
     }
 

@@ -18,9 +18,9 @@ public class DeckDAO {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Deck getDeckById(UUID id) {
-        Deck currentDeck = jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
-        currentDeck.setFlashcards(flashcardDAO.getAllFlashcardsByDeckId(id));
+    public Deck getDeckById(UUID deckId) {
+        Deck currentDeck = jdbcTemplate.queryForObject("select * from decks where deck_id = ?", new Object[] {deckId}, new DeckMapper());
+        currentDeck.setFlashcards(flashcardDAO.getAllFlashcardsByDeckId(deckId));
         return currentDeck;
     }
 

@@ -15,8 +15,8 @@ public class FlashcardDAO {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Flashcard getFlashcardById(UUID id) {
-        return jdbcTemplate.queryForObject("select * from flashcards where id = ?", new Object[] {id}, new FlashcardMapper());
+    public Flashcard getFlashcardById(UUID flashcardId) {
+        return jdbcTemplate.queryForObject("select * from flashcards where flashcard_id = ?", new Object[] {flashcardId}, new FlashcardMapper());
     }
 
     public List<Flashcard> getAllFlashcardsByDeckId(UUID deckId) {
