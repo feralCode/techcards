@@ -2,7 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.subjects;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 public class Subject {
@@ -10,7 +10,7 @@ public class Subject {
     private UUID id;
     private String name;
     private String imageUrl;
-    private Set<Deck> deckList;
+    private List<Deck> deckList;
 
     public UUID getId() {
         return id;
@@ -36,11 +36,11 @@ public class Subject {
         this.imageUrl = imageUrl;
     }
 
-    public Set<Deck> getDeckList() {
+    public List<Deck> getDeckList() {
         return deckList;
     }
 
-    public void setDeckList(Set<Deck> deckList) {
+    public void setDeckList(List<Deck> deckList) {
         this.deckList = deckList;
     }
 

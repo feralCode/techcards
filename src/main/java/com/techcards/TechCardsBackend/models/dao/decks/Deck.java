@@ -14,7 +14,7 @@ public class Deck {
     private UUID id;
     private String name;
     private User creator;
-    private Subject subject;
+    private UUID subjectId;
     private List<Flashcard> flashcards;
     private int likes;
 
@@ -42,12 +42,12 @@ public class Deck {
         this.creator = creator;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public UUID getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectId(UUID subjectId) {
+        this.subjectId = subjectId;
     }
 
     public List<Flashcard> getFlashcards() {

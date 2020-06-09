@@ -1,7 +1,5 @@
 package com.techcards.TechCardsBackend.models.dao.flashcards;
 
-import com.techcards.TechCardsBackend.models.dao.decks.Deck;
-
 import java.util.UUID;
 
 public class Flashcard {

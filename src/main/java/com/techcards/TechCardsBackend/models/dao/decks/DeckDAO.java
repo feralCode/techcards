@@ -21,10 +21,31 @@ public class DeckDAO {
     }
 
     public Deck getDeckById(UUID id) {
-        Deck myDeck = jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
+        Deck currentDeck = jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
         //TODO: get all cards by deck id
-        myDeck.setFlashcards(flashcardDAO.getAllFlashcardsByDeckId(id));
-        return myDeck;
+        currentDeck.setFlashcards(flashcardDAO.getAllFlashcardsByDeckId(id));
+        return currentDeck;
+    }
+
+
+    public List<Deck> getAllDecksBySubjectId(UUID subjectId) {
+        List<Deck> decks = new ArrayList<>();
+
+        String sql = "select * from decks where deck_subject_id = '" + subjectId + "'";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+
+        for (Map row : rows) {
+            Deck deck = new Deck();
+            deck.setId((UUID) row.get("deck_id"));
+            deck.setName((String) row.get("deck_name"));
+            deck.setCreator((User) row.get("deck_creator"));
+            deck.setSubjectId((UUID) row.get("deck_subject_id"));
+            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
+            deck.setLikes((Integer) row.get("deck_likes"));
+
+            decks.add(deck);
+        }
+        return decks;
     }
 
     public List<Deck> getAllDecks() {
@@ -37,7 +58,7 @@ public class DeckDAO {
             deck.setId((UUID) row.get("deck_id"));
             deck.setName((String) row.get("deck_name"));
             deck.setCreator((User) row.get("deck_creator"));
-            deck.setSubject((Subject) row.get("deck_subject"));
+            deck.setSubjectId((UUID) row.get("deck_subject_id"));
             deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
             deck.setLikes((Integer) row.get("deck_likes"));
 
@@ -52,11 +73,11 @@ public class DeckDAO {
         deck.setId(newDeckId);
 
         String sql = "insert into decks " +
-                "(deck_id, deck_name, deck_creator, deck_subject, deck_flashcards, deck_likes) values " +
+                "(deck_id, deck_name, deck_creator, deck_subject_id, deck_flashcards, deck_likes) values " +
                 "('" + deck.getId() +
                 "','" + deck.getName() +
                 "','" + deck.getCreator() +
-                "','" + deck.getSubject() +
+                "','" + deck.getSubjectId() +
                 "','" + deck.getFlashcards() +
                 "'," + deck.getLikes() + ")";
 
@@ -67,7 +88,7 @@ public class DeckDAO {
         String sql = "update decks set " +
                 "deck_name = '" + deck.getName() +
                 "', deck_creator = '" + deck.getCreator() +
-                "', deck_subject = '" + deck.getSubject() +
+                "', deck_subject_id = '" + deck.getSubjectId() +
                 "', deck_flashcards = '" + deck.getFlashcards() +
                 "', deck_likes = " + deck.getLikes() +
                 " where deck_id = " + deck.getId() + "";

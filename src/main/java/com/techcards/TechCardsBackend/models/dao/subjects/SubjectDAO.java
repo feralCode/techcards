@@ -1,6 +1,7 @@
 package com.techcards.TechCardsBackend.models.dao.subjects;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
+import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -11,14 +12,16 @@ import java.util.*;
 public class SubjectDAO {
 
     JdbcTemplate jdbcTemplate;
-
+    DeckDAO deckDAO;
 
     public SubjectDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public Subject getSubjectById(UUID id) {
-        return jdbcTemplate.queryForObject("select * from subjects where id = ?", new Object[] { id }, new SubjectMapper());
+        Subject currentSubject = jdbcTemplate.queryForObject("select * from subjects where id = ?", new Object[] { id }, new SubjectMapper());
+        currentSubject.setDeckList(deckDAO.getAllDecksBySubjectId(id));
+        return currentSubject;
     }
 
 
@@ -32,7 +35,7 @@ public class SubjectDAO {
             subject.setId((UUID) row.get("subject_id"));
             subject.setName((String) row.get("subject_name"));
             subject.setImageUrl((String) row.get("subject_imageUrl"));
-            subject.setDeckList((Set<Deck>) row.get("subject_deck_list"));
+            subject.setDeckList((List<Deck>) row.get("subject_deck_list"));
 
             subjects.add(subject);
         }
