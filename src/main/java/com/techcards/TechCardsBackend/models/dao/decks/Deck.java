@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
+import com.techcards.TechCardsBackend.models.dao.users.User;
 
 import java.util.Set;
 import java.util.UUID;
@@ -12,7 +13,7 @@ public class Deck {
 
     private UUID id;
     private String name;
-    private String creator;
+    private User creator;
     private Subject subject;
     private Set<Flashcard> flashcards;
     private int likes;
@@ -33,11 +34,11 @@ public class Deck {
         this.name = name;
     }
 
-    public String getCreator() {
+    public User getCreator() {
         return creator;
     }
 
-    public void setCreator(String creator) {
+    public void setCreator(User creator) {
         this.creator = creator;
     }
 
