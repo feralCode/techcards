@@ -1,6 +1,7 @@
 package com.techcards.TechCardsBackend.models.dao.users;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
+import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -10,13 +11,19 @@ import java.util.*;
 @Component
 public class UserDAO {
     JdbcTemplate jdbcTemplate;
+    DeckDAO deckDAO;
 
     public UserDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public User getUserById(UUID userId) {
-        return jdbcTemplate.queryForObject("select * from users where id = ?", new Object[] {userId}, new UserMapper());
+        User currentUser = jdbcTemplate.queryForObject("select * from users where id = ?", new Object[] {userId}, new UserMapper());
+        currentUser.setCreatedDecks(deckDAO.getAllDecksByCreatorId(userId));
+
+        //TODO: get all decks liked by current user
+
+        return currentUser;
     }
 
     public List<User> getAllUsers() {
@@ -29,8 +36,8 @@ public class UserDAO {
             user.setId((UUID) row.get("user_id"));
             user.setName((String) row.get("user_name"));
             user.setAbout((String) row.get("user_about"));
-            user.setCreatedDecks((Set<Deck>) row.get("user_created_decks"));
-            user.setLikedDecks((Set<Deck>) row.get("user_liked_decks"));
+            user.setCreatedDecks((List<Deck>) row.get("user_created_decks"));
+            user.setLikedDecks((List<Deck>) row.get("user_liked_decks"));
 
             users.add(user);
         }

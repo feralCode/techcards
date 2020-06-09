@@ -2,7 +2,6 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.flashcards.FlashcardDAO;
-import com.techcards.TechCardsBackend.models.dao.users.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +20,31 @@ public class DeckDAO {
 
     public Deck getDeckById(UUID id) {
         Deck currentDeck = jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
-        //TODO: get all cards by deck id
         currentDeck.setFlashcards(flashcardDAO.getAllFlashcardsByDeckId(id));
         return currentDeck;
     }
 
+    //TODO: get all decks liked by a user
+
+    public List<Deck> getAllDecksByCreatorId(UUID creatorId) {
+        List<Deck> decks = new ArrayList<>();
+
+        String sql = "select * from decks where deck_subject_id = '" + creatorId + "'";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+
+        for (Map row : rows) {
+            Deck deck = new Deck();
+            deck.setId((UUID) row.get("deck_id"));
+            deck.setName((String) row.get("deck_name"));
+            deck.setCreatorId((UUID) row.get("deck_creator_id"));
+            deck.setSubjectId((UUID) row.get("deck_subject_id"));
+            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
+            deck.setLikes((Integer) row.get("deck_likes"));
+
+            decks.add(deck);
+        }
+        return decks;
+    }
 
     public List<Deck> getAllDecksBySubjectId(UUID subjectId) {
         List<Deck> decks = new ArrayList<>();
@@ -37,7 +56,7 @@ public class DeckDAO {
             Deck deck = new Deck();
             deck.setId((UUID) row.get("deck_id"));
             deck.setName((String) row.get("deck_name"));
-            deck.setCreator((User) row.get("deck_creator"));
+            deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
             deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
             deck.setLikes((Integer) row.get("deck_likes"));
@@ -56,7 +75,7 @@ public class DeckDAO {
             Deck deck = new Deck();
             deck.setId((UUID) row.get("deck_id"));
             deck.setName((String) row.get("deck_name"));
-            deck.setCreator((User) row.get("deck_creator"));
+            deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
             deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
             deck.setLikes((Integer) row.get("deck_likes"));
@@ -72,10 +91,10 @@ public class DeckDAO {
         deck.setId(newDeckId);
 
         String sql = "insert into decks " +
-                "(deck_id, deck_name, deck_creator, deck_subject_id, deck_flashcards, deck_likes) values " +
+                "(deck_id, deck_name, deck_creator_id, deck_subject_id, deck_flashcards, deck_likes) values " +
                 "('" + deck.getId() +
                 "','" + deck.getName() +
-                "','" + deck.getCreator() +
+                "','" + deck.getCreatorId() +
                 "','" + deck.getSubjectId() +
                 "','" + deck.getFlashcards() +
                 "'," + deck.getLikes() + ")";
@@ -86,7 +105,7 @@ public class DeckDAO {
     public int updateDeck(Deck deck) {
         String sql = "update decks set " +
                 "deck_name = '" + deck.getName() +
-                "', deck_creator = '" + deck.getCreator() +
+                "', deck_creator_id = '" + deck.getCreatorId() +
                 "', deck_subject_id = '" + deck.getSubjectId() +
                 "', deck_flashcards = '" + deck.getFlashcards() +
                 "', deck_likes = " + deck.getLikes() +

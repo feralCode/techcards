@@ -2,7 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.users;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 public class User {
@@ -10,8 +10,8 @@ public class User {
     private UUID id;
     private String name;
     private String about;
-    private Set<Deck> createdDecks;
-    private Set<Deck> likedDecks;
+    private List<Deck> createdDecks;
+    private List<Deck> likedDecks;
 
     public UUID getId() {
         return id;
@@ -37,19 +37,19 @@ public class User {
         this.about = about;
     }
 
-    public Set<Deck> getCreatedDecks() {
+    public List<Deck> getCreatedDecks() {
         return createdDecks;
     }
 
-    public void setCreatedDecks(Set<Deck> createdDecks) {
+    public void setCreatedDecks(List<Deck> createdDecks) {
         this.createdDecks = createdDecks;
     }
 
-    public Set<Deck> getLikedDecks() {
+    public List<Deck> getLikedDecks() {
         return likedDecks;
     }
 
-    public void setLikedDecks(Set<Deck> likedDecks) {
+    public void setLikedDecks(List<Deck> likedDecks) {
         this.likedDecks = likedDecks;
     }
 

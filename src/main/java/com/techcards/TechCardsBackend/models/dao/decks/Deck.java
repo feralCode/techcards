@@ -13,7 +13,7 @@ public class Deck {
 
     private UUID id;
     private String name;
-    private User creator;
+    private UUID creatorId;
     private UUID subjectId;
     private List<Flashcard> flashcards;
     private int likes;
@@ -34,12 +34,12 @@ public class Deck {
         this.name = name;
     }
 
-    public User getCreator() {
-        return creator;
+    public UUID getCreatorId() {
+        return creatorId;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCreatorId(UUID creatorId) {
+        this.creatorId = creatorId;
     }
 
     public UUID getSubjectId() {
