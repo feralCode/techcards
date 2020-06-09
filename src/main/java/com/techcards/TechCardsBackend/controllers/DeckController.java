@@ -33,7 +33,7 @@ public class DeckController {
     }
 
     @RequestMapping(value = "/newDeck", method = RequestMethod.POST)
-    public String createDeck(@ModelAttribute("deck") Deck deck) {
+    public String createDeck(@RequestBody Deck deck) {
         deckService.createDeck(deck);
         return "redirect:/all";
     }

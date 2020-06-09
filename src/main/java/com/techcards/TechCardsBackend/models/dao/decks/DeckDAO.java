@@ -41,13 +41,12 @@ public class DeckDAO {
     }
 
     public int createDeck(Deck deck) {
-        String sql = "insert into decks (deck_id," +
-                "deck_name, " +
-                "deck_creator, " +
-                "deck_subject, " +
-                "deck_flashcards, " +
-                "deck_likes)" +
-                "values" +
+
+        UUID newDeckId = UUID.randomUUID();
+        deck.setId(newDeckId);
+
+        String sql = "insert into decks " +
+                "(deck_id, deck_name, deck_creator, deck_subject, deck_flashcards, deck_likes) values " +
                 "('" + deck.getId() +
                 "','" + deck.getName() +
                 "','" + deck.getCreator() +
