@@ -3,13 +3,14 @@ package com.techcards.TechCardsBackend.models.dao.subjects;
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public class Subject {
 
     private UUID id;
     private String name;
-    private List<Deck> deckList;
+    private Set<Deck> deckList;
 
     public UUID getId() {
         return id;
@@ -27,11 +28,11 @@ public class Subject {
         this.name = name;
     }
 
-    public List<Deck> getDeckList() {
+    public Set<Deck> getDeckList() {
         return deckList;
     }
 
-    public void setDeckList(List<Deck> deckList) {
+    public void setDeckList(Set<Deck> deckList) {
         this.deckList = deckList;
     }
 }
