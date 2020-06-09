@@ -2,10 +2,7 @@ package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.services.DeckService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,5 +29,11 @@ public class DeckController {
     public List<Deck> getAllDecks() {
         List<Deck> allDecks = deckService.getAllDecks();
         return allDecks;
+    }
+
+    @RequestMapping(value = "/newDeck", method = RequestMethod.POST)
+    public String createDeck(@ModelAttribute("deck") Deck deck) {
+        deckService.createDeck(deck);
+        return "redirect:/all";
     }
 }

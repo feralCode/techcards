@@ -38,4 +38,24 @@ public class DeckDAO {
         }
         return decks;
     }
+
+    public int createDeck(Deck deck) {
+        String sql = "insert into decks (deck_id," +
+                "deck_name, " +
+                "deck_creator, " +
+                "deck_subject, " +
+                "deck_flashcards, " +
+                "deck_likes)" +
+                "values" +
+                "('" + deck.getId() +
+                "','" + deck.getName() +
+                "','" + deck.getCreator() +
+                "','" + deck.getSubject() +
+                "','" + deck.getFlashcards() +
+                "'," + deck.getLikes() + ")";
+
+        return jdbcTemplate.update(sql);
+    }
+
+
 }

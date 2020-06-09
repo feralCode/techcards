@@ -34,4 +34,8 @@ public class DeckService {
         List<Deck> allDecks = deckDAO.getAllDecks();
         return allDecks;
     }
+
+    public int createDeck(Deck deck) {
+        return deckDAO.createDeck(deck);
+    }
 }
