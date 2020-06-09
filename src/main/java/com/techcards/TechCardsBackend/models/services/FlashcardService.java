@@ -22,6 +22,11 @@ public class FlashcardService {
         return flashcard;
     }
 
+    public List<Flashcard> getAllFlashcardsByDeckId(UUID deckId) {
+        List<Flashcard> allFlashcardsByDeckId = flashcardDAO.getAllFlashcardsByDeckId(deckId);
+        return allFlashcardsByDeckId;
+    }
+
     public List<Flashcard> getAllFlashcards() {
         List<Flashcard> allFlashcards = flashcardDAO.getAllFlashcards();
         return allFlashcards;

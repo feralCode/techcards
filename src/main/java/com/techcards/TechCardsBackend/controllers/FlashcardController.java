@@ -26,6 +26,13 @@ public class FlashcardController {
         return flashcard;
     }
 
+    @RequestMapping(value = "/deck/{deckId}", method = RequestMethod.GET)
+    public List<Flashcard> getFlashcardsByDeckId(@PathVariable("deckId") UUID deckId) {
+        List<Flashcard> allFlashcardsByDeckId = flashcardService.getAllFlashcardsByDeckId(deckId);
+        return allFlashcardsByDeckId;
+    }
+
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Flashcard> getAllFlashcards() {
         List<Flashcard> allFlashcards = flashcardService.getAllFlashcards();
