@@ -42,4 +42,9 @@ public class Flashcard {
     public void setDeck(Deck deck) {
         this.deck = deck;
     }
+
+    @Override
+    public String toString() {
+        return "Flashcard clue: " + this.clue + ", answer: " + this.answer;
+    }
 }

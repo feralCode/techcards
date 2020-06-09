@@ -65,4 +65,9 @@ public class Deck {
     public void setLikes(int liked) {
         this.likes = liked;
     }
+
+    @Override
+    public String toString() {
+        return "Deck " + this.name;
+    }
 }

@@ -52,4 +52,9 @@ public class User {
     public void setLikedDecks(Set<Deck> likedDecks) {
         this.likedDecks = likedDecks;
     }
+
+    @Override
+    public String toString() {
+        return "User " + this.name;
+    }
 }

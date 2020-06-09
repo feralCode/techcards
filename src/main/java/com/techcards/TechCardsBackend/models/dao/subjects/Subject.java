@@ -44,4 +44,9 @@ public class Subject {
     public void setDeckList(Set<Deck> deckList) {
         this.deckList = deckList;
     }
+
+    @Override
+    public String toString() {
+        return "Subject name: " + this.name + ", Decks: " +this.deckList;
+    }
 }
