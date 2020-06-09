@@ -26,6 +26,12 @@ public class DeckController {
         return deck;
     }
 
+    @RequestMapping(value = "/subject/{subjectId}", method = RequestMethod.GET)
+    public List<Deck> getAllDecksBySubjectId(@PathVariable("subjectId") UUID subjectId) {
+        List<Deck> allDecksBySubjectId = deckService.getAllDecksBySubjectId(subjectId);
+        return allDecksBySubjectId;
+    }
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Deck> getAllDecks() {
         List<Deck> allDecks = deckService.getAllDecks();

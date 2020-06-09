@@ -19,15 +19,12 @@ public class DeckService {
     public Deck getDeckById(UUID id) {
         Deck deck = deckDAO.getDeckById(id);
 
-//        Deck deck = new Deck();
-//
-//        deck.setId(id);
-//        deck.setName("Deck Name");
-//        deck.setSubject("Java Spring");
-//        deck.setCreator("Will Rowston");
-//        deck.setLikes(15);
-
         return deck;
+    }
+
+    public List<Deck> getAllDecksBySubjectId(UUID subjectId) {
+        List<Deck> allDecksBySubjectId = deckDAO.getAllDecksBySubjectId(subjectId);
+        return allDecksBySubjectId;
     }
 
     public List<Deck> getAllDecks() {
