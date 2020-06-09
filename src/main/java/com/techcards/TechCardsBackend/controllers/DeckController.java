@@ -50,4 +50,10 @@ public class DeckController {
         deckService.updateDeck(deck);
         return "redirect:/all";
     }
+
+    @RequestMapping(value="/deleteDeck/{deckId}",method = RequestMethod.DELETE)
+    public String deleteDeck(@PathVariable("deckId") UUID deckId) {
+        deckService.deleteDeck(deckId);
+        return "redirect:/all";
+    }
 }

@@ -42,4 +42,8 @@ public class DeckService {
     public int updateDeck(Deck deck) {
         return deckDAO.updateDeck(deck);
     }
+
+    public int deleteDeck(UUID deckId) {
+        return deckDAO.deleteDeck(deckId);
+    }
 }

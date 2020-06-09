@@ -70,5 +70,10 @@ public class DeckDAO {
         return jdbcTemplate.update(sql);
     }
 
+    public int deleteDeck(UUID deckId) {
+        String sql = "delete from decks where id = '" + deckId + "'";
+        return jdbcTemplate.update(sql);
+    }
+
 
 }
