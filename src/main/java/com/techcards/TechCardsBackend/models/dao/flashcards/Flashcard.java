@@ -34,4 +34,12 @@ public class Flashcard {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
 }
