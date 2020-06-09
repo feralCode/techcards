@@ -1,9 +1,6 @@
 package com.techcards.TechCardsBackend.models.dao.flashcards;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
-import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
-import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
-import com.techcards.TechCardsBackend.models.dao.users.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,6 @@
 package com.techcards.TechCardsBackend.models.services;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
-import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.flashcards.FlashcardDAO;
 import org.springframework.stereotype.Service;
 
