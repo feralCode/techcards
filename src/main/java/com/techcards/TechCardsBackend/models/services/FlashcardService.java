@@ -17,7 +17,7 @@ public class FlashcardService {
     }
 
     public Flashcard getFlashcardById(UUID id) {
-        Flashcard flashcard = new Flashcard();
+        Flashcard flashcard = flashcardDAO.getFlashcardById(id);
 
         return flashcard;
     }

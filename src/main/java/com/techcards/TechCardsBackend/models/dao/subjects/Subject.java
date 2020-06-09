@@ -2,7 +2,6 @@ package com.techcards.TechCardsBackend.models.dao.subjects;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
