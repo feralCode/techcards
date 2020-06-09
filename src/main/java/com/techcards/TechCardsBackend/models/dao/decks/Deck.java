@@ -6,27 +6,15 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
-@Entity
-@Table(name = "decks")
+
 public class Deck {
 
-    @Id
-    @GeneratedValue
+
     private UUID id;
-
-    @Column(name = "deck_name")
     private String name;
-
-    @Column(name = "deck_creator")
     private String creator;
-
-    @Column(name = "deck_subject")
     private String subject;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "flashcards")
     private Set<Flashcard> flashcards;
-
-    @Column(name = "deck_likes")
     private int likes;
 
     public UUID getId() {
