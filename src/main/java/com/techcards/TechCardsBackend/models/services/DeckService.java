@@ -38,4 +38,8 @@ public class DeckService {
     public int createDeck(Deck deck) {
         return deckDAO.createDeck(deck);
     }
+
+    public int updateDeck(Deck deck) {
+        return deckDAO.updateDeck(deck);
+    }
 }

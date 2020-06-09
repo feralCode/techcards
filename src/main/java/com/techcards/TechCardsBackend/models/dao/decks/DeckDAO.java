@@ -58,5 +58,17 @@ public class DeckDAO {
         return jdbcTemplate.update(sql);
     }
 
+    public int updateDeck(Deck deck) {
+        String sql = "update decks set " +
+                "deck_name = '" + deck.getName() +
+                "', deck_creator = '" + deck.getCreator() +
+                "', deck_subject = '" + deck.getSubject() +
+                "', deck_flashcards = '" + deck.getFlashcards() +
+                "', deck_likes = " + deck.getLikes() +
+                "where deck_id = " + deck.getId() + "";
+
+        return jdbcTemplate.update(sql);
+    }
+
 
 }
