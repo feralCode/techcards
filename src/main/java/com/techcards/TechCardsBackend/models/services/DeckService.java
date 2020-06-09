@@ -4,6 +4,7 @@ import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -16,14 +17,21 @@ public class DeckService {
     }
 
     public Deck getDeckById(UUID id) {
-        Deck deck = new Deck();
+        Deck deck = deckDAO.getDeckById(id);
 
-        deck.setId(id);
-        deck.setName("Deck Name");
-        deck.setSubject("Java Spring");
-        deck.setCreator("Will Rowston");
-        deck.setLikes(15);
+//        Deck deck = new Deck();
+//
+//        deck.setId(id);
+//        deck.setName("Deck Name");
+//        deck.setSubject("Java Spring");
+//        deck.setCreator("Will Rowston");
+//        deck.setLikes(15);
 
         return deck;
+    }
+
+    public List<Deck> getAllDecks() {
+        List<Deck> allDecks = deckDAO.getAllDecks();
+        return allDecks;
     }
 }

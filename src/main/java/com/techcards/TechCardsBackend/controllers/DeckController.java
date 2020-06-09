@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -25,5 +26,11 @@ public class DeckController {
         Deck deck = deckService.getDeckById(deckId);
 
         return deck;
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<Deck> getAllDecks() {
+        List<Deck> allDecks = deckService.getAllDecks();
+        return allDecks;
     }
 }

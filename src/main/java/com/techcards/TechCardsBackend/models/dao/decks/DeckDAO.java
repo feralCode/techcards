@@ -1,10 +1,11 @@
 package com.techcards.TechCardsBackend.models.dao.decks;
 
+import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 public class DeckDAO {
@@ -17,5 +18,24 @@ public class DeckDAO {
 
     public Deck getDeckById(UUID id) {
         return jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
+    }
+
+    public List<Deck> getAllDecks() {
+        List<Deck> decks = new ArrayList<>();
+
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from decks");
+
+        for (Map row : rows) {
+            Deck deck = new Deck();
+            deck.setId((UUID) row.get("deck_id"));
+            deck.setName((String) row.get("deck_name"));
+            deck.setCreator((String) row.get("deck_creator"));
+            deck.setSubject((String) row.get("deck_subject"));
+            deck.setFlashcards((Set<Flashcard>) row.get("deck_flashcards"));
+            deck.setLikes((Integer) row.get("deck_likes"));
+
+            decks.add(deck);
+        }
+        return decks;
     }
 }
