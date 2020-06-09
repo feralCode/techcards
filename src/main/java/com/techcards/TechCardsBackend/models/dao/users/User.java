@@ -1,4 +1,4 @@
-package com.techcards.TechCardsBackend.models.dao;
+package com.techcards.TechCardsBackend.models.dao.users;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 
