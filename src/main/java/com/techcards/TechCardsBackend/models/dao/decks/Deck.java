@@ -2,7 +2,6 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 
-import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
