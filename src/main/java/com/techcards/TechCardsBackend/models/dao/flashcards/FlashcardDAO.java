@@ -1,6 +1,5 @@
 package com.techcards.TechCardsBackend.models.dao.flashcards;
 
-import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,25 @@ public class FlashcardDAO {
     public Flashcard getFlashcardById(UUID id) {
         return jdbcTemplate.queryForObject("select * from flashcards where id = ?", new Object[] {id}, new FlashcardMapper());
     }
-    
+
+    public List<Flashcard> getAllFlashcardsByDeckId(UUID deckId) {
+        List<Flashcard> flashcards = new ArrayList<>();
+
+        String sql = "select * from flashcards where flashcard_deck_id = '" + deckId + "'";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+
+        for (Map row : rows) {
+            Flashcard flashcard = new Flashcard();
+            flashcard.setId((UUID) row.get("flashcard_id"));
+            flashcard.setClue((String) row.get("flashcard_clue"));
+            flashcard.setAnswer((String) row.get("flashcard_answer"));
+            flashcard.setDeckId((UUID) row.get("flashcard_deck_id"));
+
+            flashcards.add(flashcard);
+        }
+        return flashcards;
+    }
+
     public List<Flashcard> getAllFlashcards() {
         List<Flashcard> flashcards = new ArrayList<>();
 
@@ -30,7 +47,7 @@ public class FlashcardDAO {
             flashcard.setId((UUID) row.get("flashcard_id"));
             flashcard.setClue((String) row.get("flashcard_clue"));
             flashcard.setAnswer((String) row.get("flashcard_answer"));
-            flashcard.setDeck((Deck) row.get("flashcard_deck"));
+            flashcard.setDeckId((UUID) row.get("flashcard_deck_id"));
 
             flashcards.add(flashcard);
         }
@@ -43,11 +60,11 @@ public class FlashcardDAO {
         flashcard.setId(newFlashcardId);
 
         String sql = "insert into flashcards " +
-                "(flashcard_id, flashcard_clue, flashcard_answer, flashcard_deck) values " +
+                "(flashcard_id, flashcard_clue, flashcard_answer, flashcard_deck_id) values " +
                 "('" + flashcard.getId() +
                 "','" + flashcard.getClue() +
                 "','" + flashcard.getAnswer() +
-                "','" + flashcard.getDeck() + "')";
+                "','" + flashcard.getDeckId() + "')";
 
         return jdbcTemplate.update(sql);
     }
@@ -56,7 +73,7 @@ public class FlashcardDAO {
         String sql = "update flashcards set " +
                 "flashcard_clue = '" + flashcard.getClue() +
                 "', flashcard_answer = '" + flashcard.getAnswer() +
-                "', flashcard_deck = '" + flashcard.getDeck() +
+                "', flashcard_deck_id = '" + flashcard.getDeckId() +
                 "' where flashcard_id = " + flashcard.getId() + "";
 
         return jdbcTemplate.update(sql);

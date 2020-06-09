@@ -4,7 +4,7 @@ import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import com.techcards.TechCardsBackend.models.dao.users.User;
 
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -15,7 +15,7 @@ public class Deck {
     private String name;
     private User creator;
     private Subject subject;
-    private Set<Flashcard> flashcards;
+    private List<Flashcard> flashcards;
     private int likes;
 
     public UUID getId() {
@@ -50,11 +50,11 @@ public class Deck {
         this.subject = subject;
     }
 
-    public Set<Flashcard> getFlashcards() {
+    public List<Flashcard> getFlashcards() {
         return flashcards;
     }
 
-    public void setFlashcards(Set<Flashcard> flashcards) {
+    public void setFlashcards(List<Flashcard> flashcards) {
         this.flashcards = flashcards;
     }
 

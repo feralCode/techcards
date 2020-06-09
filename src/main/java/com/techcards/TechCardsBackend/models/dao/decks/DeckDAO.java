@@ -1,6 +1,7 @@
 package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
+import com.techcards.TechCardsBackend.models.dao.flashcards.FlashcardDAO;
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import com.techcards.TechCardsBackend.models.dao.users.User;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,13 +14,17 @@ import java.util.*;
 public class DeckDAO {
 
     JdbcTemplate jdbcTemplate;
+    FlashcardDAO flashcardDAO;
 
     public DeckDAO(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public Deck getDeckById(UUID id) {
-        return jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
+        Deck myDeck = jdbcTemplate.queryForObject("select * from decks where id = ?", new Object[] {id}, new DeckMapper());
+        //TODO: get all cards by deck id
+        myDeck.setFlashcards(flashcardDAO.getAllFlashcardsByDeckId(id));
+        return myDeck;
     }
 
     public List<Deck> getAllDecks() {
@@ -33,7 +38,7 @@ public class DeckDAO {
             deck.setName((String) row.get("deck_name"));
             deck.setCreator((User) row.get("deck_creator"));
             deck.setSubject((Subject) row.get("deck_subject"));
-            deck.setFlashcards((Set<Flashcard>) row.get("deck_flashcards"));
+            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
             deck.setLikes((Integer) row.get("deck_likes"));
 
             decks.add(deck);

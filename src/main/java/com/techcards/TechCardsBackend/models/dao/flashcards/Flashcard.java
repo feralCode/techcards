@@ -9,7 +9,7 @@ public class Flashcard {
     private UUID id;
     private String clue;
     private String answer;
-    private Deck deck;
+    private UUID deckId;
 
     public UUID getId() {
         return id;
@@ -35,12 +35,12 @@ public class Flashcard {
         this.answer = answer;
     }
 
-    public Deck getDeck() {
-        return deck;
+    public UUID getDeckId() {
+        return deckId;
     }
 
-    public void setDeck(Deck deck) {
-        this.deck = deck;
+    public void setDeckId(UUID deckId) {
+        this.deckId = deckId;
     }
 
     @Override
