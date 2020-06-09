@@ -1,6 +1,7 @@
 package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
+import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +31,7 @@ public class DeckDAO {
             deck.setId((UUID) row.get("deck_id"));
             deck.setName((String) row.get("deck_name"));
             deck.setCreator((String) row.get("deck_creator"));
-            deck.setSubject((String) row.get("deck_subject"));
+            deck.setSubject((Subject) row.get("deck_subject"));
             deck.setFlashcards((Set<Flashcard>) row.get("deck_flashcards"));
             deck.setLikes((Integer) row.get("deck_likes"));
 
