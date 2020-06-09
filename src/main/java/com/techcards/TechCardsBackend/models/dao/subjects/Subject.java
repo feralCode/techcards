@@ -10,6 +10,7 @@ public class Subject {
 
     private UUID id;
     private String name;
+    private String imageUrl;
     private Set<Deck> deckList;
 
     public UUID getId() {
@@ -26,6 +27,14 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Set<Deck> getDeckList() {

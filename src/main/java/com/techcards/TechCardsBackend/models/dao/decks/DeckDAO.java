@@ -65,7 +65,7 @@ public class DeckDAO {
                 "', deck_subject = '" + deck.getSubject() +
                 "', deck_flashcards = '" + deck.getFlashcards() +
                 "', deck_likes = " + deck.getLikes() +
-                "where deck_id = " + deck.getId() + "";
+                " where deck_id = " + deck.getId() + "";
 
         return jdbcTemplate.update(sql);
     }
