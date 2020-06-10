@@ -1,6 +1,7 @@
 package com.techcards.TechCardsBackend.models.dao.users;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
+import com.techcards.TechCardsBackend.models.dao.likes.Like;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +12,7 @@ public class User {
     private String name;
     private String about;
     private List<Deck> createdDecks;
-    private List<Deck> likedDecks;
+    private List<Like> likedDecks;
 
     public UUID getId() {
         return id;
@@ -45,11 +46,11 @@ public class User {
         this.createdDecks = createdDecks;
     }
 
-    public List<Deck> getLikedDecks() {
+    public List<Like> getLikedDecks() {
         return likedDecks;
     }
 
-    public void setLikedDecks(List<Deck> likedDecks) {
+    public void setLikedDecks(List<Like> likedDecks) {
         this.likedDecks = likedDecks;
     }
 

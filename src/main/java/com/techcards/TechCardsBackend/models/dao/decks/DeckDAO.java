@@ -118,6 +118,4 @@ public class DeckDAO {
         String sql = "delete from decks where id = '" + deckId + "'";
         return jdbcTemplate.update(sql);
     }
-
-
 }
