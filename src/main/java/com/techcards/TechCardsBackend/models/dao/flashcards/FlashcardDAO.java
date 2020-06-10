@@ -80,7 +80,7 @@ public class FlashcardDAO {
     }
 
     public int deleteFlashcard(UUID flashcardId) {
-        String sql = "delete from flashcards where id = '" + flashcardId + "'";
+        String sql = "delete from flashcards where flashcard_id = '" + flashcardId + "'";
         return jdbcTemplate.update(sql);
     }
 

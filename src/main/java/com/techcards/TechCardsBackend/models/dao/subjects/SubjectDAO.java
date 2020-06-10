@@ -35,7 +35,7 @@ public class SubjectDAO {
             subject.setId((UUID) row.get("subject_id"));
             subject.setName((String) row.get("subject_name"));
             subject.setImageUrl((String) row.get("subject_imageUrl"));
-            subject.setDeckList((List<Deck>) row.get("subject_deck_list"));
+//            subject.setDeckList((List<Deck>) row.get("subject_deck_list"));
 
             subjects.add(subject);
         }
@@ -48,11 +48,10 @@ public class SubjectDAO {
         subject.setId(newSubjectId);
 
         String sql = "insert into subjects " +
-                "(subject_id, subject_name, subject_imageUrl, subject_deck_list) values " +
+                "(subject_id, subject_name, subject_imageUrl) values " +
                 "('" + subject.getId() +
                 "','" + subject.getName() +
-                "','" + subject.getImageUrl() +
-                "','" + subject.getDeckList() + "')";
+                "','" + subject.getImageUrl() + "')";
 
         return jdbcTemplate.update(sql);
     }
@@ -61,14 +60,13 @@ public class SubjectDAO {
         String sql = "update subjects set " +
                 "subject_name = '" + subject.getName() +
                 "', subject_imageUrl = '" + subject.getImageUrl() +
-                "', subject_deck_list = '" + subject.getDeckList() +
                 "' where subject_id = " + subject.getId() + "";
 
         return jdbcTemplate.update(sql);
     }
 
     public int deleteSubject(UUID subjectId) {
-        String sql = "delete from subjects where id = '" + subjectId + "'";
+        String sql = "delete from subjects where subject_id = '" + subjectId + "'";
         return jdbcTemplate.update(sql);
     }
 

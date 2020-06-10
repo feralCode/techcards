@@ -27,7 +27,7 @@ public class LikeDAO {
     public List<Like> getAllLikesByUserId(UUID userId) {
         List<Like> likes = new ArrayList<>();
 
-        String sql = "select * from likes where like_subject_id = '" + userId + "'";
+        String sql = "select * from likes where like_user_id = '" + userId + "'";
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
 
         for (Map row : rows) {
@@ -44,7 +44,7 @@ public class LikeDAO {
     public List<Like> getAllLikesByDeckId(UUID deckId) {
         List<Like> likes = new ArrayList<>();
 
-        String sql = "select * from likes where like_subject_id = '" + deckId + "'";
+        String sql = "select * from likes where like_deck_id = '" + deckId + "'";
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
 
         for (Map row : rows) {
@@ -98,7 +98,7 @@ public class LikeDAO {
     }
 
     public int deleteLike(UUID likeId) {
-        String sql = "delete from likes where id = '" + likeId + "'";
+        String sql = "delete from likes where like_id = '" + likeId + "'";
         return jdbcTemplate.update(sql);
     }
 }

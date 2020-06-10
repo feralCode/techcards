@@ -39,8 +39,8 @@ public class DeckDAO {
             deck.setName((String) row.get("deck_name"));
             deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
-            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
-            deck.setLikes((List<Like>) row.get("deck_likes"));
+//            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
+//            deck.setLikes((List<Like>) row.get("deck_likes"));
 
             decks.add(deck);
         }
@@ -59,8 +59,8 @@ public class DeckDAO {
             deck.setName((String) row.get("deck_name"));
             deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
-            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
-            deck.setLikes((List<Like>) row.get("deck_likes"));
+//            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
+//            deck.setLikes((List<Like>) row.get("deck_likes"));
 
             decks.add(deck);
         }
@@ -78,8 +78,8 @@ public class DeckDAO {
             deck.setName((String) row.get("deck_name"));
             deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
-            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
-            deck.setLikes((List<Like>) row.get("deck_likes"));
+//            deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
+//            deck.setLikes((List<Like>) row.get("deck_likes"));
 
             decks.add(deck);
         }
@@ -92,13 +92,11 @@ public class DeckDAO {
         deck.setId(newDeckId);
 
         String sql = "insert into decks " +
-                "(deck_id, deck_name, deck_creator_id, deck_subject_id, deck_flashcards, deck_likes) values " +
+                "(deck_id, deck_name, deck_creator_id, deck_subject_id) values " +
                 "('" + deck.getId() +
                 "','" + deck.getName() +
                 "','" + deck.getCreatorId() +
-                "','" + deck.getSubjectId() +
-                "','" + deck.getFlashcards() +
-                "'," + deck.getLikes() + ")";
+                "','" + deck.getSubjectId() + "')";
 
         return jdbcTemplate.update(sql);
     }
@@ -108,15 +106,13 @@ public class DeckDAO {
                 "deck_name = '" + deck.getName() +
                 "', deck_creator_id = '" + deck.getCreatorId() +
                 "', deck_subject_id = '" + deck.getSubjectId() +
-                "', deck_flashcards = '" + deck.getFlashcards() +
-                "', deck_likes = " + deck.getLikes() +
-                " where deck_id = " + deck.getId() + "";
+                "' where deck_id = " + deck.getId() + "";
 
         return jdbcTemplate.update(sql);
     }
 
     public int deleteDeck(UUID deckId) {
-        String sql = "delete from decks where id = '" + deckId + "'";
+        String sql = "delete from decks where deck_id = '" + deckId + "'";
         return jdbcTemplate.update(sql);
     }
 }

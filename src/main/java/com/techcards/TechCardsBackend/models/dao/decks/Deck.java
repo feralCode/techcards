@@ -9,7 +9,6 @@ import java.util.UUID;
 
 public class Deck {
 
-
     private UUID id;
     private String name;
     private UUID creatorId;

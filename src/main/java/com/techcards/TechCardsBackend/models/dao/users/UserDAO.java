@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.users;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
+import com.techcards.TechCardsBackend.models.dao.likes.LikeDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.util.*;
 public class UserDAO {
     JdbcTemplate jdbcTemplate;
     DeckDAO deckDAO;
+    LikeDAO likeDAO;
 
     public UserDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -21,7 +23,7 @@ public class UserDAO {
         User currentUser = jdbcTemplate.queryForObject("select * from users where user_id = ?", new Object[] {userId}, new UserMapper());
         currentUser.setCreatedDecks(deckDAO.getAllDecksByCreatorId(userId));
 
-        //TODO: get all decks liked by current user
+        currentUser.setLikedDecks(likeDAO.getAllLikesByUserId(userId));
 
         return currentUser;
     }
@@ -36,8 +38,8 @@ public class UserDAO {
             user.setId((UUID) row.get("user_id"));
             user.setName((String) row.get("user_name"));
             user.setAbout((String) row.get("user_about"));
-            user.setCreatedDecks((List<Deck>) row.get("user_created_decks"));
-            user.setLikedDecks((List<Deck>) row.get("user_liked_decks"));
+//            user.setCreatedDecks((List<Deck>) row.get("user_created_decks"));
+//            user.setLikedDecks((List<Deck>) row.get("user_liked_decks"));
 
             users.add(user);
         }
@@ -50,12 +52,10 @@ public class UserDAO {
         user.setId(newUserId);
 
         String sql = "insert into users " +
-                "(user_id, user_name, user_about, user_created_decks, user_liked_decks) values " +
+                "(user_id, user_name, user_about) values " +
                 "('" + user.getId() +
                 "','" + user.getName() +
-                "','" + user.getAbout() +
-                "','" + user.getCreatedDecks() +
-                "','" + user.getLikedDecks() + "');";
+                "','" + user.getAbout() + "');";
 
         return jdbcTemplate.update(sql);
     }
@@ -64,15 +64,13 @@ public class UserDAO {
         String sql = "update users set " +
                 "user_name = '" + user.getName() +
                 "', user_about = '" + user.getAbout() +
-                "', user_created_decks = '" + user.getCreatedDecks() +
-                "', user_liked_decks = '" + user.getLikedDecks() +
                 "' where user_id = " + user.getId() + "";
 
         return jdbcTemplate.update(sql);
     }
 
     public int deleteUser(UUID userId) {
-        String sql = "delete from users where id = '" + userId + "'";
+        String sql = "delete from users where user_id = '" + userId + "'";
         return jdbcTemplate.update(sql);
     }
 }
