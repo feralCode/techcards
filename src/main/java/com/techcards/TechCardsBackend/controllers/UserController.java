@@ -1,7 +1,6 @@
 package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.users.User;
-import com.techcards.TechCardsBackend.models.dao.users.User;
 import com.techcards.TechCardsBackend.models.services.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     private final UserService userService;

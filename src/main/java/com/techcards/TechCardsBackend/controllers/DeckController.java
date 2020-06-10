@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/deck")
+@RequestMapping("/api/v1/deck")
 public class DeckController {
 
     private final DeckService deckService;

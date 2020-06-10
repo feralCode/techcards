@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/flashcards")
+@RequestMapping("/api/v1/flashcards")
 public class FlashcardController {
 
     private final FlashcardService flashcardService;

@@ -2,8 +2,6 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.likes.Like;
-import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
-import com.techcards.TechCardsBackend.models.dao.users.User;
 
 import java.util.List;
 import java.util.UUID;
