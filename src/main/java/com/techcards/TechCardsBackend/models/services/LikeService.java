@@ -28,7 +28,7 @@ public class LikeService {
     }
 
     public List<Like> getAllLikesByDeckId(UUID deckId) {
-        List<Like> allLikesByDeckId = likeDAO.getAllLikesByUserId(deckId);
+        List<Like> allLikesByDeckId = likeDAO.getAllLikesByDeckId(deckId);
         return allLikesByDeckId;
     }
 

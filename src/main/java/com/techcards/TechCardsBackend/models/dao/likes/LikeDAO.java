@@ -101,6 +101,4 @@ public class LikeDAO {
         String sql = "delete from likes where id = '" + likeId + "'";
         return jdbcTemplate.update(sql);
     }
-
-
 }
