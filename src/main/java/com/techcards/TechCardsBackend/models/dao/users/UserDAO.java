@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.users;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
+import com.techcards.TechCardsBackend.models.dao.likes.Like;
 import com.techcards.TechCardsBackend.models.dao.likes.LikeDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,15 @@ public class UserDAO {
         User currentUser = jdbcTemplate.queryForObject("select * from users where user_id = ?", new Object[] {userId}, new UserMapper());
         currentUser.setCreatedDecks(deckDAO.getAllDecksByCreatorId(userId));
 
-        currentUser.setLikedDecks(likeDAO.getAllLikesByUserId(userId));
+        List<Like> userLikes = likeDAO.getAllLikesByUserId(userId);
+        List<Deck> deckList = new ArrayList<>();
+
+        for (Like like : userLikes){
+            Deck deck = deckDAO.getDeckById(like.getDeckId());
+            deckList.add(deck);
+        }
+
+        currentUser.setLikedDecks(deckList);
 
         return currentUser;
     }

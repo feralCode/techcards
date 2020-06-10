@@ -12,7 +12,7 @@ public class User {
     private String name;
     private String about;
     private List<Deck> createdDecks;
-    private List<Like> likedDecks;
+    private List<Deck> likedDecks;
 
     public UUID getId() {
         return id;
@@ -46,11 +46,11 @@ public class User {
         this.createdDecks = createdDecks;
     }
 
-    public List<Like> getLikedDecks() {
+    public List<Deck> getLikedDecks() {
         return likedDecks;
     }
 
-    public void setLikedDecks(List<Like> likedDecks) {
+    public void setLikedDecks(List<Deck> likedDecks) {
         this.likedDecks = likedDecks;
     }
 

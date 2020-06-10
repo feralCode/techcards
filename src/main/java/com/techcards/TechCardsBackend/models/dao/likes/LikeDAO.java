@@ -1,5 +1,6 @@
 package com.techcards.TechCardsBackend.models.dao.likes;
 
+import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
