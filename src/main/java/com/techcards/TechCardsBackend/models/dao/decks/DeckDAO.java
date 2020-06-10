@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.flashcards.FlashcardDAO;
+import com.techcards.TechCardsBackend.models.dao.likes.Like;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +40,7 @@ public class DeckDAO {
             deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
             deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
-            deck.setLikes((Integer) row.get("deck_likes"));
+            deck.setLikes((List<Like>) row.get("deck_likes"));
 
             decks.add(deck);
         }
@@ -59,7 +60,7 @@ public class DeckDAO {
             deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
             deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
-            deck.setLikes((Integer) row.get("deck_likes"));
+            deck.setLikes((List<Like>) row.get("deck_likes"));
 
             decks.add(deck);
         }
@@ -78,7 +79,7 @@ public class DeckDAO {
             deck.setCreatorId((UUID) row.get("deck_creator_id"));
             deck.setSubjectId((UUID) row.get("deck_subject_id"));
             deck.setFlashcards((List<Flashcard>) row.get("deck_flashcards"));
-            deck.setLikes((Integer) row.get("deck_likes"));
+            deck.setLikes((List<Like>) row.get("deck_likes"));
 
             decks.add(deck);
         }

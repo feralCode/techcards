@@ -1,6 +1,7 @@
 package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
+import com.techcards.TechCardsBackend.models.dao.likes.Like;
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import com.techcards.TechCardsBackend.models.dao.users.User;
 
@@ -16,7 +17,7 @@ public class Deck {
     private UUID creatorId;
     private UUID subjectId;
     private List<Flashcard> flashcards;
-    private int likes;
+    private List<Like> likes;
 
     public UUID getId() {
         return id;
@@ -58,12 +59,12 @@ public class Deck {
         this.flashcards = flashcards;
     }
 
-    public int getLikes() {
+    public List<Like> getLikes() {
         return likes;
     }
 
-    public void setLikes(int liked) {
-        this.likes = liked;
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
     }
 
     @Override

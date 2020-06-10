@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 
+import com.techcards.TechCardsBackend.models.dao.likes.Like;
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class DeckMapper implements RowMapper<Deck> {
         deck.setCreatorId((UUID) resultSet.getObject("deck_creator"));
         deck.setSubjectId((UUID) resultSet.getObject("deck_subject_id"));
         deck.setFlashcards((List<Flashcard>) resultSet.getObject("deck_flashcards"));
-        deck.setLikes(resultSet.getInt("deck_likes"));
+        deck.setLikes((List<Like>) resultSet.getObject("deck_likes"));
 
         return deck;
     }
