@@ -29,6 +29,23 @@ class SingleSubject extends Component {
         }
     }
 
+    handleChange = (evt) => {
+        const newState = {...this.state}
+        newState.subject[evt.target.name] = evt.target.value
+        this.setState(newState)
+    }
+
+    onSubmit = async (evt) => {
+        evt.preventDefault()
+        try {
+            await axios.put('/api/v1/subject/editSubject', this.state.subject)
+            console.log("edited subject")
+        } catch (e) {
+            console.log("failed to edit subject")
+            console.error(e)
+        }
+    }
+
     render() {
         return (
             <div>
@@ -36,6 +53,25 @@ class SingleSubject extends Component {
                 <div className="title">{this.state.subject.name}</div>
                 {/*<div>{this.state.subject.deckList.map()}</div>*/}
 
+                <div>
+                    <form onSubmit={this.onSubmit}>
+                        <label>Subject Name</label>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={this.handleChange}
+                            value={this.state.subject.name}
+                        />
+                        <label>Image URL</label>
+                        <input
+                            type='text'
+                            name='imageUrl'
+                            onChange={this.handleChange}
+                            value={this.state.subject.imageUrl}
+                        />
+                        <input type="submit" value="Save"/>
+                    </form>
+                </div>
                 <AllDecksBySubjectId subjectId={this.props.match.params.subjectId}/>
             </div>
         );
