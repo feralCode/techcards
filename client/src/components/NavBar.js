@@ -31,28 +31,27 @@ class NavBar extends Component {
         return (
             <div>
                 <nav className="nav-bar">
-                    <div className="links">
-                        <div className="nav-link">Browse</div>
-                        <div className="nav-link">Create</div>
-                    </div>
-                    <div>
-                        <div className="logo">TECHCARDS</div>
-                    </div>
-                    <div className="user-dropdown">
-                        <DropdownButton id="dropdown-basic-button" title="Select User">
-                            {this.state.allUsers.map((user, index) => {
-                                return (
-                                    <div key={`fw755wf34 - ${index}`}>
-                                        <Dropdown.Item onClick={() => {
-                                            const newState = {...this.state}
-                                            newState.currentUserId = user.id
-                                            this.setState(newState)
-                                        }}>{user.name}</Dropdown.Item>
-                                    </div>
-                                )
-                            })}
-                        </DropdownButton>
-                    </div>
+
+                    {/*TODO: pass current id to links with state*/}
+                    <div className="nav-link">Browse</div>
+                    <div className="nav-link">Create</div>
+
+                    <div className="logo">TECHCARDS</div>
+
+                    <div className="nav-link">Users</div>
+                    <DropdownButton id="dropdown-basic-button" title="Select User">
+                        {this.state.allUsers.map((user, index) => {
+                            return (
+                                <div key={`fw755wf34 - ${index}`}>
+                                    <Dropdown.Item onClick={() => {
+                                        const newState = {...this.state}
+                                        newState.currentUserId = user.id
+                                        this.setState(newState)
+                                    }}>{user.name}</Dropdown.Item>
+                                </div>
+                            )
+                        })}
+                    </DropdownButton>
                 </nav>
             </div>
         );

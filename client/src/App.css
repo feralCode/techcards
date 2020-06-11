@@ -18,11 +18,7 @@
   color: #000000;
 }
 
-.links{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+
 
 .nav-link {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, Monaco, sans-serif;
@@ -34,8 +30,8 @@
 }
 
 
-.user-dropdown {
-  margin-right: 10px;
+#dropdown-basic-button {
+  margin-right: 15px;
   padding-right: 10px;
 }
 
