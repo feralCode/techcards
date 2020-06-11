@@ -8,7 +8,7 @@ class AllFlashcardsByDeckId extends Component {
 
     state = {
         flashcards: [],
-        showAnswer: false
+        showAnswer: false,
     }
 
     componentDidMount() {
@@ -34,33 +34,43 @@ class AllFlashcardsByDeckId extends Component {
     }
 
     render() {
+
         return (
             <div>
-                {this.state.showAnswer
-                ?
-                    <div>
-                        <Card style={{ width: '26rem' }}>
-                            <Card.Body>
-                                <Card.Text>
-                                    Clue = Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <Button variant="primary" onClick={this.toggleAnswer}>Show the Answer</Button>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    :
-                    <div>
-                        <Card style={{ width: '26rem' }}>
-                            <Card.Body>
-                                <Card.Text>
-                                    Some example text to act as an asnwer
-                                </Card.Text>
-                                <Button variant="primary" onClick={this.toggleAnswer}>Show the Clue</Button>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                }
+                <div>
+                    {this.state.flashcards.map((card, index) => {
+                        return (
+                            <div>
+                                {this.state.showAnswer
+                                    ?
+                                    <div>
+                                        <Card style={{width: '26rem'}}>
+                                            <Card.Body>
+                                                <Card.Text>
+                                                    {card.answer}
+                                                </Card.Text>
+                                                <Button variant="primary" onClick={this.toggleAnswer}>Show the
+                                                    Clue</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                                    :
+                                    <div>
+                                        <Card style={{width: '26rem'}}>
+                                            <Card.Body>
+                                                <Card.Text>
+                                                    {card.clue}
+                                                </Card.Text>
+                                                <Button variant="primary" onClick={this.toggleAnswer}>Show the
+                                                    Answer</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                                }
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         );
     }
