@@ -12,10 +12,10 @@ import SingleDeck from "./components/deck/SingleDeck";
 function App() {
   return (
       <div>
-        <div>
-          <NavBar/>
-        </div>
         <Router>
+            <div>
+                <NavBar/>
+            </div>
           <div className="wrapper">
             <Switch>
               <Route exact path="/" component={Home} />

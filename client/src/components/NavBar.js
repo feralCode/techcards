@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import { Link } from 'react-router-dom'
 
 class NavBar extends Component {
 
@@ -36,7 +37,9 @@ class NavBar extends Component {
                     <div className="nav-link">Browse</div>
                     <div className="nav-link">Create</div>
 
-                    <div className="logo">TECHCARDS</div>
+                    <Link to={"/"}>
+                        <div className="logo">TECHCARDS</div>
+                    </Link>
 
                     <div className="nav-link">Users</div>
                     <DropdownButton id="dropdown-basic-button" title="Select User">

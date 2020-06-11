@@ -34,6 +34,7 @@ class SingleSubject extends Component {
             <div>
                 <img className="subject-img" src={this.state.subject.imageUrl}/>
                 <div className="title">{this.state.subject.name}</div>
+                {/*<div>{this.state.subject.deckList.map()}</div>*/}
 
                 <AllDecksBySubjectId subjectId={this.props.match.params.subjectId}/>
             </div>
