@@ -29,12 +29,7 @@ class Home extends Component {
                         <Button variant="dark">Sign Up</Button>
                     </Link>
 
-                    <Link to={{
-                        pathname:"/browse/subjects",
-                        state: {
-                            userId: this.props.location.state.userId
-                        }
-                    }}>
+                    <Link to={"/browse/subjects"}>
                         <Button variant="outline-dark">Browse</Button>
                     </Link>
                 </div>

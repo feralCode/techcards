@@ -47,12 +47,7 @@ class NavBar extends Component {
                         </Link>
                         <div className="nav-link">Create</div>
 
-                        <Link to={{
-                            pathname: "/",
-                            state: {
-                                userId: this.state.currentUserId
-                            }
-                        }}>
+                        <Link to={"/"}>
                             <div className="logo">TECHCARDS</div>
                         </Link>
 
@@ -76,8 +71,8 @@ class NavBar extends Component {
                     </nav>
                     <div className="wrapper">
                         <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/browse/subjects" component={AllSubjects}/>
+                            <Route exact path="/" render={(props) => <Home {...props} userId={this.state.currentUserId}/>} />
+                            <Route exact path="/browse/subjects" render={(props) => <AllSubjects {...props} userId={this.state.currentUserId}/>}/>
                             <Route exact path="/subject/:subjectId" component={SingleSubject}/>
                             <Route exact path="/deck/:deckId" component={SingleDeck}/>
                             <Route exact path="/user/newUser" component={NewUser}/>

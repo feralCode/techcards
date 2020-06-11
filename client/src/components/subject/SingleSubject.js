@@ -9,8 +9,7 @@ class SingleSubject extends Component {
             name: '',
             imageUrl: '',
             deckList: []
-        },
-        currentUserId: ''
+        }
     }
 
     componentDidMount() {
@@ -22,7 +21,6 @@ class SingleSubject extends Component {
             const subjectId = this.props.match.params.subjectId
             const res = await axios.get(`/api/v1/subject/${subjectId}`)
             const newState = {...this.state}
-            newState.currentUserId = this.props.location.state.userId
             newState.subject = res.data
             this.setState(newState)
         } catch (e) {
@@ -76,7 +74,6 @@ class SingleSubject extends Component {
                 </div>
                 <AllDecksBySubjectId
                     subjectId={this.props.match.params.subjectId}
-                    userId={this.state.currentUserId}
                 />
             </div>
         );

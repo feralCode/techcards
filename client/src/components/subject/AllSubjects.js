@@ -21,7 +21,7 @@ class AllSubjects extends Component {
         try {
             const res = await axios.get('/api/v1/subject/all')
             const newState = {...this.state}
-            newState.currentUserId = this.props.location.state.userId
+            newState.currentUserId = this.props.userId
             newState.allSubjects = res.data
             this.setState(newState)
         } catch (e) {
@@ -55,12 +55,7 @@ class AllSubjects extends Component {
                                     <div key={`t3426gfw7 - ${index}`}>
                                         <div>
                                             {/*TODO: use subject name instead of id in url... pass id through with props*/}
-                                            <Link to={{
-                                                pathname: `/subject/${subject.id}`,
-                                                state: {
-                                                    userId: this.props.location.state.userId
-                                                }
-                                            }}
+                                            <Link to={`/subject/${subject.id}`}
                                             //       onClick={() => {
                                             //     const newState = {...this.state}
                                             //     newState.currentSubjectId = subject.id
