@@ -15,10 +15,9 @@ public class DeckMapper implements RowMapper<Deck> {
 
         Deck deck = new Deck();
         deck.setId(resultSet.getObject("deck_id", UUID.class));
-        deck.setCreatorId((UUID) resultSet.getObject("deck_creator"));
+        deck.setName(resultSet.getString("deck_name"));
+        deck.setCreatorId((UUID) resultSet.getObject("deck_creator_id"));
         deck.setSubjectId((UUID) resultSet.getObject("deck_subject_id"));
-        deck.setFlashcards((List<Flashcard>) resultSet.getObject("deck_flashcards"));
-        deck.setLikes((List<Like>) resultSet.getObject("deck_likes"));
 
         return deck;
     }
