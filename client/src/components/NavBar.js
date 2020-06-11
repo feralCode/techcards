@@ -43,7 +43,10 @@ class NavBar extends Component {
                         <div className="logo">TECHCARDS</div>
                     </Link>
 
-                    <div className="nav-link">Users</div>
+                    <Link to={"/users"}>
+                        <div className="nav-link">Users</div>
+                    </Link>
+
                     <DropdownButton id="dropdown-basic-button" title="Select User">
                         {this.state.allUsers.map((user, index) => {
                             return (

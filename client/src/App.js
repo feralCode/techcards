@@ -8,6 +8,7 @@ import AllSubjects from "./components/subject/AllSubjects";
 import SingleSubject from "./components/subject/SingleSubject";
 import SingleDeck from "./components/deck/SingleDeck";
 import NewUser from "./components/user/NewUser";
+import AllUsers from "./components/user/AllUsers";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route exact path="/subject/:subjectId" component={SingleSubject}/>
               <Route exact path="/deck/:deckId" component={SingleDeck}/>
               <Route exact path="/user/newUser" component={NewUser}/>
+              <Route exact path="/users" component={AllUsers}/>
             </Switch>
           </div>
         </Router>
