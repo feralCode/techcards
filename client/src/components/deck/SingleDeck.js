@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import AllFlashcardsByDeckId from "../flashcard/AllFlashcardsByDeckId";
 
 class SingleDeck extends Component {
 
@@ -31,6 +32,9 @@ class SingleDeck extends Component {
         return (
             <div>
                 <div className="title">{this.state.deck.name}</div>
+                <AllFlashcardsByDeckId
+                    deckId={this.props.match.params.deckId}
+                />
             </div>
         );
     }
