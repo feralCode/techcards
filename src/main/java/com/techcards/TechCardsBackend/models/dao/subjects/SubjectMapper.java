@@ -15,7 +15,6 @@ public class SubjectMapper implements RowMapper<Subject> {
         Subject subject = new Subject();
         subject.setId(resultSet.getObject("subject_id", UUID.class));
         subject.setName(resultSet.getString("subject_name"));
-        subject.setDeckList((List<Deck>) resultSet.getObject("subject_deckList"));
 
         return subject;
     }

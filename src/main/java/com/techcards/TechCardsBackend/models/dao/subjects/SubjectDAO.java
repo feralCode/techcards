@@ -20,7 +20,8 @@ public class SubjectDAO {
 
     public Subject getSubjectById(UUID subjectId) {
         Subject currentSubject = jdbcTemplate.queryForObject("select * from subjects where subject_id = ?", new Object[] { subjectId }, new SubjectMapper());
-        currentSubject.setDeckList(deckDAO.getAllDecksBySubjectId(subjectId));
+//        TODO: nullpointerexcetion because decklist is null... uncomment when decks are added to DB
+//        currentSubject.setDeckList(deckDAO.getAllDecksBySubjectId(subjectId));
         return currentSubject;
     }
 
