@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import Home from './components/Home.js'
 import NavBar from "./components/NavBar";
+import AllSubjects from "./components/subject/AllSubjects";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <div className="wrapper">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/browse/subjects" component={AllSubjects}/>
             </Switch>
           </div>
         </Router>

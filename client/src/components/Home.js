@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Button from "react-bootstrap/Button";
 
@@ -23,9 +22,12 @@ class Home extends Component {
                 </div>
                 <div className="get-started">
                     <div>Ready to get started?</div>
+                    {/*TODO: add links*/}
                     <div>Sign up or browse as a guest</div>
                     <Button variant="dark">Sign Up</Button>
-                    <Button variant="outline-dark">Browse</Button>
+                    <Link to={"/browse/subjects"}>
+                        <Button variant="outline-dark">Browse</Button>
+                    </Link>
                 </div>
             </div>
         );
