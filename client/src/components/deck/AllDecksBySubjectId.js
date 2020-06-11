@@ -36,7 +36,7 @@ class AllDecksBySubjectId extends Component {
                             </Link>
                             {/*<div>Flashcards: {deck.flashcards.length}</div>*/}
                             {/*<div>Likes: {deck.likes.length}</div>*/}
-                            {/*/!*TODO: use creator id to get the user that created each deck*!/*!/*/}
+                        {/*TODO: pass this.prop.userId through create deck comp*/}
                         </div>
                     )
                 })}
