@@ -1,7 +1,6 @@
 package com.techcards.TechCardsBackend.models.services;
 
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
-import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import com.techcards.TechCardsBackend.models.dao.subjects.SubjectDAO;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 
 class SingleSubject extends Component {
 
@@ -15,11 +16,16 @@ class SingleSubject extends Component {
     }
 
     getSubjectById = async () => {
-        const subjectId = this.props.match.params.subjectId
-        const res = await axios.get(`/api/v1/subject/${subjectId}`)
-        const newState = {...this.state}
-        newState.subject = res.data
-        this.setState(newState)
+        try {
+            const subjectId = this.props.match.params.subjectId
+            const res = await axios.get(`/api/v1/subject/${subjectId}`)
+            const newState = {...this.state}
+            newState.subject = res.data
+            this.setState(newState)
+        } catch (e) {
+            console.log("failed to get single subject")
+            console.error(e)
+        }
     }
 
     render() {
