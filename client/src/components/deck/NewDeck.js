@@ -43,14 +43,14 @@ class NewDeck extends Component {
                         type='text'
                         name='creatorId'
                         onChange={this.handleChange}
-                        value={this.state.deck.creatorId}
+                        value={this.props.userId}
                     />
                     <label>Subject ID</label>
                     <input
                         type='text'
                         name='subjectId'
                         onChange={this.handleChange}
-                        value={this.state.deck.subjectId}
+                        value={this.props.subjectId}
                     />
                     <input type="submit" value="Add Deck"/>
                 </form>

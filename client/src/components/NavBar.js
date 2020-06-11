@@ -73,7 +73,7 @@ class NavBar extends Component {
                         <Switch>
                             <Route exact path="/" render={(props) => <Home {...props} userId={this.state.currentUserId}/>} />
                             <Route exact path="/browse/subjects" render={(props) => <AllSubjects {...props} userId={this.state.currentUserId}/>}/>
-                            <Route exact path="/subject/:subjectId" component={SingleSubject}/>
+                            <Route exact path="/subject/:subjectId" render={(props) => <SingleSubject {...props} userId={this.state.currentUserId}/>}/>
                             <Route exact path="/deck/:deckId" component={SingleDeck}/>
                             <Route exact path="/user/newUser" component={NewUser}/>
                             <Route exact path="/users" component={AllUsers}/>
