@@ -1,4 +1,7 @@
-
+.wrapper {
+  background: #F2F2F2;
+  height: 1440px;
+}
 /*NavBar COMPONENT*/
 .nav-bar {
   width: 100%;
@@ -6,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .logo {
@@ -40,8 +44,6 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background: #F2F2F2;
-  height: 1440px;
 }
 
 .description {
@@ -59,4 +61,21 @@
 .get-started {
   width: 50%;
   padding: 50px;
+}
+
+
+/*ALL SUBJECTS COMPONENT*/
+.all-subjects {
+  text-align: center;
+}
+/*TODO: style title and subject cards*/
+.title {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.subject-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 99px;
 }
