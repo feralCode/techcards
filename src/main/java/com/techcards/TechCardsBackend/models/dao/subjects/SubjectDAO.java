@@ -35,7 +35,7 @@ public class SubjectDAO {
             Subject subject = new Subject();
             subject.setId((UUID) row.get("subject_id"));
             subject.setName((String) row.get("subject_name"));
-            subject.setImageUrl((String) row.get("subject_imageUrl"));
+            subject.setImageUrl((String) row.get("subject_imageurl"));
 //            subject.setDeckList((List<Deck>) row.get("subject_deck_list"));
 
             subjects.add(subject);
@@ -49,7 +49,7 @@ public class SubjectDAO {
         subject.setId(newSubjectId);
 
         String sql = "insert into subjects " +
-                "(subject_id, subject_name, subject_imageUrl) values " +
+                "(subject_id, subject_name, subject_imageurl) values " +
                 "('" + subject.getId() +
                 "','" + subject.getName() +
                 "','" + subject.getImageUrl() + "')";
@@ -60,7 +60,7 @@ public class SubjectDAO {
     public int updateSubject(Subject subject) {
         String sql = "update subjects set " +
                 "subject_name = '" + subject.getName() +
-                "', subject_imageUrl = '" + subject.getImageUrl() +
+                "', subject_imageurl = '" + subject.getImageUrl() +
                 "' where subject_id = " + subject.getId() + "";
 
         return jdbcTemplate.update(sql);
