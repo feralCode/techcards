@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import AllDecksBySubjectId from "../deck/AllDecksBySubjectId";
 
 class SingleSubject extends Component {
 
@@ -33,20 +34,8 @@ class SingleSubject extends Component {
             <div>
                 <img className="subject-img" src={this.state.subject.imageUrl}/>
                 <div className="title">{this.state.subject.name}</div>
-                {/*<div>*/}
-                {/*    {this.state.subject.deckList.map((deck, index) => {*/}
-                {/*        return (*/}
-                {/*            <div key={`5wg5vrg - ${index}`}>*/}
-                {/*                /!*TODO: use creator id to get the user that created each deck*!/*/}
-                {/*                <div>{deck.name}</div>*/}
-                {/*                <div>Flashcards: {deck.flashcards.length}</div>*/}
-                {/*                <div>Likes: {deck.likes.length}</div>*/}
-                {/*            </div>*/}
-                {/*        )*/}
-                {/*    })}*/}
-                {/*</div>*/}
 
-            {/* all decks by subject id component*/}
+                <AllDecksBySubjectId subjectId={this.props.match.params.subjectId}/>
             </div>
         );
     }
