@@ -24,7 +24,11 @@ class Home extends Component {
                     <div>Ready to get started?</div>
                     {/*TODO: add links*/}
                     <div>Sign up or browse as a guest</div>
-                    <Button variant="dark">Sign Up</Button>
+
+                    <Link to={"/user/newUser"}>
+                        <Button variant="dark">Sign Up</Button>
+                    </Link>
+
                     <Link to={"/browse/subjects"}>
                         <Button variant="outline-dark">Browse</Button>
                     </Link>
