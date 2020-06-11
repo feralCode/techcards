@@ -38,7 +38,12 @@ class AllSubjects extends Component {
             <div className="all-subjects">
                 {this.state.showNewSubjectForm
                 ?
-                    <NewSubjectForm/>
+                    <div>
+                        <NewSubjectForm/>
+                        <Button variant="outline-dark" onClick={this.toggleNewSubjectForm} >
+                            Back to All Subjects
+                        </Button>
+                    </div>
                 :
                     <div>
                         <div className="title">Select a subject to begin studying</div>
