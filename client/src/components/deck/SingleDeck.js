@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import AllFlashcardsByDeckId from "../flashcard/AllFlashcardsByDeckId";
+import Button from "react-bootstrap/Button";
 
 class SingleDeck extends Component {
 
@@ -8,7 +9,8 @@ class SingleDeck extends Component {
         deck: {
             name: '',
             flashcards: []
-        }
+        },
+        showEditForm: false
     }
 
     componentDidMount() {
@@ -27,14 +29,43 @@ class SingleDeck extends Component {
             console.error(e)
         }
     }
+
+    toggleEditForm = () => {
+        const showEditForm = !this.state.showEditForm
+        this.setState({ showEditForm })
+    }
     
     render() {
         return (
             <div>
-                <div className="title">{this.state.deck.name}</div>
-                <AllFlashcardsByDeckId
-                    deckId={this.props.match.params.deckId}
-                />
+                {this.state.showEditForm
+                ?
+                    <div>
+                        <form onSubmit={this.onSubmit}>
+                            <label>Deck Name</label>
+                            <input
+                                type='text'
+                                name='name'
+                                onChange={this.handleChange}
+                                value={this.state.deck.name}
+                            />
+                            <input type="submit" value="Save"/>
+                        </form>
+                        <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                            Back
+                        </Button>
+                    </div>
+                :
+                    <div>
+                        <div className="title">{this.state.deck.name}</div>
+                        <AllFlashcardsByDeckId
+                            deckId={this.props.match.params.deckId}
+                        />
+                        <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                            Edit
+                        </Button>
+                    </div>
+                }
             </div>
         );
     }

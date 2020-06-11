@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import AllDecksBySubjectId from "../deck/AllDecksBySubjectId";
+import Button from "react-bootstrap/Button";
 
 class SingleSubject extends Component {
 
@@ -9,7 +10,8 @@ class SingleSubject extends Component {
             name: '',
             imageUrl: '',
             deckList: []
-        }
+        },
+        showEditForm: false
     }
 
     componentDidMount() {
@@ -46,36 +48,54 @@ class SingleSubject extends Component {
         }
     }
 
+
+    toggleEditForm = () => {
+        const showEditForm = !this.state.showEditForm
+        this.setState({ showEditForm })
+    }
+
     render() {
         return (
             <div>
-                <img className="subject-img" src={this.state.subject.imageUrl}/>
-                <div className="title">{this.state.subject.name}</div>
-                {/*<div>{this.state.subject.deckList.map()}</div>*/}
+                {this.state.showEditForm
+                ?
+                    <div>
+                        <form onSubmit={this.onSubmit}>
+                            <label>Subject Name</label>
+                            <input
+                                type='text'
+                                name='name'
+                                onChange={this.handleChange}
+                                value={this.state.subject.name}
+                            />
+                            <label>Image URL</label>
+                            <input
+                                type='text'
+                                name='imageUrl'
+                                onChange={this.handleChange}
+                                value={this.state.subject.imageUrl}
+                            />
+                            <input type="submit" value="Save"/>
+                            <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                                Back
+                            </Button>
+                        </form>
+                    </div>
+                :
+                    <div>
+                        <img className="subject-img" src={this.state.subject.imageUrl}/>
+                        <div className="title">{this.state.subject.name}</div>
+                        {/*<div>{this.state.subject.deckList.map()}</div>*/}
 
-                <div>
-                    <form onSubmit={this.onSubmit}>
-                        <label>Subject Name</label>
-                        <input
-                            type='text'
-                            name='name'
-                            onChange={this.handleChange}
-                            value={this.state.subject.name}
+                        <AllDecksBySubjectId
+                            subjectId={this.props.match.params.subjectId}
+                            userId={this.props.userId}
                         />
-                        <label>Image URL</label>
-                        <input
-                            type='text'
-                            name='imageUrl'
-                            onChange={this.handleChange}
-                            value={this.state.subject.imageUrl}
-                        />
-                        <input type="submit" value="Save"/>
-                    </form>
-                </div>
-                <AllDecksBySubjectId
-                    subjectId={this.props.match.params.subjectId}
-                    userId={this.props.userId}
-                />
+                        <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                            Edit
+                        </Button>
+                    </div>
+                }
             </div>
         );
     }
