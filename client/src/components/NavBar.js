@@ -34,7 +34,9 @@ class NavBar extends Component {
                 <nav className="nav-bar">
 
                     {/*TODO: pass current id to links with state*/}
-                    <div className="nav-link">Browse</div>
+                    <Link to={"/browse/subjects"}>
+                        <div className="nav-link">Browse</div>
+                    </Link>
                     <div className="nav-link">Create</div>
 
                     <Link to={"/"}>
