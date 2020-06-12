@@ -20,7 +20,7 @@ class NewFlashcard extends Component {
     onSubmit = async (evt) => {
         evt.preventDefault()
         try {
-            await axios.post('/api/v1/flashcards/newFlashcard', this.state.deck)
+            await axios.post('/api/v1/flashcards/newFlashcard', this.state.flashcard)
             console.log("created a new flashcard")
         } catch (e) {
             console.log("failed to create a new flashcard")

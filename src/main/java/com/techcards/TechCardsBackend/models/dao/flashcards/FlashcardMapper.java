@@ -11,9 +11,10 @@ public class FlashcardMapper implements RowMapper<Flashcard> {
     public Flashcard mapRow(ResultSet resultSet, int i) throws SQLException {
 
         Flashcard flashcard = new Flashcard();
-        flashcard.setId(resultSet.getObject("id", UUID.class));
-        flashcard.setClue(resultSet.getString("this is a clue for a flashcard"));
-        flashcard.setAnswer(resultSet.getString("this is an answer for a flashcard"));
+        flashcard.setId(resultSet.getObject("flashcard_id", UUID.class));
+        flashcard.setClue(resultSet.getString("flashcard_clue"));
+        flashcard.setAnswer(resultSet.getString("flashcard_answer"));
+        flashcard.setId((UUID) resultSet.getObject("flashcard_deck_id"));
         return flashcard;
     }
 }

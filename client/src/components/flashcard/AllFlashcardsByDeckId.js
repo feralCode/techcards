@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import NewFlashcard from "./NewFlashcard";
+import EditFlashcard from "./EditFlashcard";
 
 class AllFlashcardsByDeckId extends Component {
 
     state = {
         flashcards: [],
         showAnswer: false,
-        showNewCardForm: false
+        showNewCardForm: false,
+        editCard: false
     }
 
     componentDidMount() {
@@ -40,6 +42,12 @@ class AllFlashcardsByDeckId extends Component {
         this.setState({showNewCardForm})
     }
 
+
+    toggleEditCard = () => {
+        const editCard = !this.state.editCard
+        this.setState({editCard})
+    }
+
     render() {
 
         return (
@@ -47,7 +55,7 @@ class AllFlashcardsByDeckId extends Component {
                 <div>
                     {this.state.flashcards.map((card, index) => {
                         return (
-                            <div>
+                            <div key={`t4j30q8on - ${index}`}>
                                 {this.state.showAnswer
                                     ?
                                     <div>
@@ -74,6 +82,23 @@ class AllFlashcardsByDeckId extends Component {
                                         </Card>
                                     </div>
                                 }
+
+                                <div>
+                                    {this.state.editCard
+                                    ?
+                                        <div>
+                                            <EditFlashcard
+                                                flashcardId={card.id}
+                                                deckId={card.deckId}
+                                            />
+                                            <Button variant="outline-dark" onClick={this.toggleEditCard}>Hide Form</Button>
+                                        </div>
+                                    :
+                                        <div>
+                                            <Button variant="outline-dark" onClick={this.toggleEditCard}>Edit Card</Button>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         )
                     })}
