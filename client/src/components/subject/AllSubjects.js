@@ -53,7 +53,7 @@ class AllSubjects extends Component {
                             {this.state.allSubjects.map((subject, index) => {
                                 return (
                                     <div key={`t3426gfw7 - ${index}`}>
-                                        <div>
+                                        <div className="subject">
                                             {/*TODO: use subject name instead of id in url... pass id through with props*/}
                                             <Link to={`/subject/${subject.id}`}
                                             //       onClick={() => {

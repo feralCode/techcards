@@ -91,10 +91,24 @@
 .title {
   font-weight: 600;
   font-size: 24px;
+  margin-top: 40px;
 }
 
 .subject-img {
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   border-radius: 99px;
+}
+
+.subject-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.subject {
+  margin: 20px;
+  padding: 10px;
 }
