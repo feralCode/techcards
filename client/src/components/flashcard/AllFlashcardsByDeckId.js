@@ -87,15 +87,17 @@ class AllFlashcardsByDeckId extends Component {
                                     {this.state.editCard
                                     ?
                                         <div>
-                                            <EditFlashcard
-                                                flashcardId={card.id}
-                                                deckId={card.deckId}
-                                            />
+                                            {/*<EditFlashcard*/}
+                                            {/*    flashcardId={card.id}*/}
+                                            {/*    deckId={card.deckId}*/}
+                                            {/*/>*/}
                                             <Button variant="outline-dark" onClick={this.toggleEditCard}>Hide Form</Button>
                                         </div>
                                     :
                                         <div>
-                                            <Button variant="outline-dark" onClick={this.toggleEditCard}>Edit Card</Button>
+                                            <Link to={`/flashcards/editFlashcard/${card.id}`}>
+                                                <Button variant="outline-dark">Edit Card</Button>
+                                            </Link>
                                         </div>
                                     }
                                 </div>

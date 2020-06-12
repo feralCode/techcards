@@ -14,7 +14,7 @@ public class FlashcardMapper implements RowMapper<Flashcard> {
         flashcard.setId(resultSet.getObject("flashcard_id", UUID.class));
         flashcard.setClue(resultSet.getString("flashcard_clue"));
         flashcard.setAnswer(resultSet.getString("flashcard_answer"));
-        flashcard.setId((UUID) resultSet.getObject("flashcard_deck_id"));
+        flashcard.setDeckId((UUID) resultSet.getObject("flashcard_deck_id"));
         return flashcard;
     }
 }

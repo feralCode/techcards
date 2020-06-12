@@ -46,10 +46,9 @@ public class FlashcardController {
     }
 
     @RequestMapping(value="/editFlashcard/{flashcardId}")
-    public String editFlashcard(@PathVariable("flashcardId") UUID flashcardId, Model m) {
+    public Flashcard editFlashcard(@PathVariable("flashcardId") UUID flashcardId) {
         Flashcard flashcard = flashcardService.getFlashcardById(flashcardId);
-        m.addAttribute("command", flashcard);
-        return "editFlashcardForm";
+        return flashcard;
     }
 
     @RequestMapping(value = "/editFlashcard", method = RequestMethod.PUT)

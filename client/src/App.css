@@ -1,6 +1,9 @@
 .wrapper {
   background: #F2F2F2;
-  height: 1440px;
+  height: 1500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 /*NavBar COMPONENT*/
 .nav-bar {

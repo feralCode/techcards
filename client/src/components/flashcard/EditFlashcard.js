@@ -17,8 +17,8 @@ class EditFlashcard extends Component {
 
     getFlashcardById = async () => {
         try {
-            const flashcardId = this.props.flashcardId
-            const res = await axios.get(`/api/v1/flashcards/${flashcardId}`)
+            const flashcardId = this.props.match.params.flashcardId
+            const res = await axios.get(`/api/v1/flashcards/editFlashcard/${flashcardId}`)
             const newState = {...this.state}
             newState.flashcard = res.data
             this.setState(newState)
@@ -51,9 +51,8 @@ class EditFlashcard extends Component {
             <div>
                 <div>
                     <form onSubmit={this.onSubmit}>
-                        <label>Flashcard ID</label>
                         <input
-                            type="text"
+                            type="hidden"
                             name="id"
                             value={this.props.flashcardId}
                             onChange={this.handleChange}
@@ -72,9 +71,8 @@ class EditFlashcard extends Component {
                             onChange={this.handleChange}
                             value={this.state.flashcard.answer}
                         />
-                        <label>Deck ID</label>
                         <input
-                            type="text"
+                            type="hidden"
                             name="deckId"
                             value={this.props.deckId}
                             onChange={this.handleChange}

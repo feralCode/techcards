@@ -10,6 +10,7 @@ import SingleDeck from "./deck/SingleDeck";
 import NewUser from "./user/NewUser";
 import AllUsers from "./user/AllUsers";
 import SingleUser from "./user/SingleUser";
+import EditFlashcard from "./flashcard/EditFlashcard";
 
 class NavBar extends Component {
 
@@ -78,6 +79,7 @@ class NavBar extends Component {
                             <Route exact path="/user/newUser" component={NewUser}/>
                             <Route exact path="/users" component={AllUsers}/>
                             <Route exact path="/user/:userId" component={SingleUser}/>
+                            <Route exact path="/flashcards/editFlashcard/:flashcardId" component={EditFlashcard}/>
                         </Switch>
                     </div>
                 </Router>
