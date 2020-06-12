@@ -64,7 +64,23 @@
 .get-started {
   width: 50%;
   padding: 50px;
+  text-align: center;
 }
+
+.sign-up-greeting {
+  margin: 10px;
+}
+
+.home-button {
+  margin: 10px;
+}
+
+.home-button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 /*ALL SUBJECTS COMPONENT*/

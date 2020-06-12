@@ -21,17 +21,23 @@ class Home extends Component {
                     </ul>
                 </div>
                 <div className="get-started">
-                    <div>Ready to get started?</div>
+                    <div className="ace">Ready to get started?</div>
                     {/*TODO: add links*/}
-                    <div>Sign up or browse as a guest</div>
+                    <div className="sign-up-greeting">Sign up or browse as a guest</div>
 
-                    <Link to={"/user/newUser"}>
-                        <Button variant="dark">Sign Up</Button>
-                    </Link>
+                    <div className="home-button-group">
+                        <div className="home-button">
+                            <Link to={"/user/newUser"}>
+                                <Button variant="dark">Sign Up</Button>
+                            </Link>
+                        </div>
 
-                    <Link to={"/browse/subjects"}>
-                        <Button variant="outline-dark">Browse</Button>
-                    </Link>
+                        <div className="home-button">
+                            <Link to={"/browse/subjects"}>
+                                <Button variant="outline-dark">Browse</Button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
