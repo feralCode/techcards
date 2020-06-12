@@ -4,7 +4,7 @@ TechCards provides learning and studying tools for software engineers to ace the
 
 ### Important Links
 
-* [Deployed App](https://protected-temple-87139.herokuapp.com/) via Heroku
+* [Deployed App](https://mysterious-stream-35285.herokuapp.com/) via Heroku
 * [Trello Board](https://trello.com/b/gH2YZahL/techcards)
 
 ### Technnical Details
