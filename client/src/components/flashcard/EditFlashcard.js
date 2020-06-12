@@ -50,30 +50,34 @@ class EditFlashcard extends Component {
         return (
             <div>
                 <div>
-                    <form onSubmit={this.onSubmit}>
+                    <form onSubmit={this.onSubmit} className="form">
                         <input
                             type="hidden"
                             name="id"
+                            className="form-input"
                             value={this.props.flashcardId}
                             onChange={this.handleChange}
                         />
-                        <label>Clue</label>
+                        <label className="form-label">Clue</label>
                         <textarea
                             type='text'
                             name='clue'
+                            className="form-input"
                             onChange={this.handleChange}
                             value={this.state.flashcard.clue}
                         />
-                        <label>Answer</label>
+                        <label className="form-label">Answer</label>
                         <textarea
                             type='text'
                             name='answer'
+                            className="form-input"
                             onChange={this.handleChange}
                             value={this.state.flashcard.answer}
                         />
                         <input
                             type="hidden"
                             name="deckId"
+                            className="form-input"
                             value={this.props.deckId}
                             onChange={this.handleChange}
                         />

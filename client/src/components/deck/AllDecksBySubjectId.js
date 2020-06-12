@@ -44,7 +44,7 @@ class AllDecksBySubjectId extends Component {
                                 userId={this.props.userId}
                                 subjectId={this.props.subjectId}
                             />
-                            <Button variant="outline-dark" onClick={this.toggleNewDeckForm} >
+                            <Button variant="outline-dark" className="back-button" onClick={this.toggleNewDeckForm} >
                                 Back
                             </Button>
                         </div>

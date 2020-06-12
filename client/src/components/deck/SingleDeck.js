@@ -41,17 +41,18 @@ class SingleDeck extends Component {
                 {this.state.showEditForm
                 ?
                     <div>
-                        <form onSubmit={this.onSubmit}>
-                            <label>Deck Name</label>
+                        <form onSubmit={this.onSubmit} className="form">
+                            <label className="form-label">Deck Name</label>
                             <input
                                 type='text'
                                 name='name'
+                                className="form-input"
                                 onChange={this.handleChange}
                                 value={this.state.deck.name}
                             />
                             <input type="submit" value="Save"/>
                         </form>
-                        <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                        <Button variant="outline-dark" className="back-button" onClick={this.toggleEditForm} >
                             Back
                         </Button>
                     </div>

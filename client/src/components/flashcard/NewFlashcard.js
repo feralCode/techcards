@@ -31,25 +31,28 @@ class NewFlashcard extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
-                    <label>Clue</label>
+                <form onSubmit={this.onSubmit} className="form">
+                    <label className="form-label">Clue</label>
                     <textarea
                         type='text'
                         name='clue'
+                        className="form-input"
                         onChange={this.handleChange}
                         value={this.state.flashcard.clue}
                     />
-                    <label>Answer</label>
+                    <label className="form-label">Answer</label>
                     <textarea
                         type='text'
                         name='answer'
+                        className="form-input"
                         onChange={this.handleChange}
                         value={this.state.flashcard.answer}
                     />
-                    <label>Deck ID</label>
+                    <label className="form-label">Deck ID</label>
                     <input
                         type='text'
                         name='deckId'
+                        className="form-input"
                         onChange={this.handleChange}
                         value={this.props.deckId}
                     />

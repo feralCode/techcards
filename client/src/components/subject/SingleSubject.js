@@ -60,23 +60,25 @@ class SingleSubject extends Component {
                 {this.state.showEditForm
                 ?
                     <div>
-                        <form onSubmit={this.onSubmit}>
-                            <label>Subject Name</label>
+                        <form onSubmit={this.onSubmit} className="form">
+                            <label className="form-label">Subject Name</label>
                             <input
                                 type='text'
                                 name='name'
+                                className="form-input"
                                 onChange={this.handleChange}
                                 value={this.state.subject.name}
                             />
-                            <label>Image URL</label>
+                            <label className="form-label">Image URL</label>
                             <input
                                 type='text'
                                 name='imageUrl'
+                                className="form-input"
                                 onChange={this.handleChange}
                                 value={this.state.subject.imageUrl}
                             />
                             <input type="submit" value="Save"/>
-                            <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                            <Button variant="outline-dark" className="back-button" onClick={this.toggleEditForm} >
                                 Back
                             </Button>
                         </form>

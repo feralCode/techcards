@@ -42,7 +42,7 @@ class AllSubjects extends Component {
                 ?
                     <div>
                         <NewSubjectForm/>
-                        <Button variant="outline-dark" onClick={this.toggleNewSubjectForm} >
+                        <Button variant="outline-dark" className="back-button" onClick={this.toggleNewSubjectForm} >
                             Back to All Subjects
                         </Button>
                     </div>

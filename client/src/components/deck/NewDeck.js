@@ -30,25 +30,28 @@ class NewDeck extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
-                    <label>Deck Name</label>
+                <form onSubmit={this.onSubmit} className="form">
+                    <label className="form-label">Deck Name</label>
                     <input
                         type='text'
                         name='name'
+                        className="form-input"
                         onChange={this.handleChange}
                         value={this.state.deck.name}
                     />
-                    <label>Creator ID</label>
+                    <label className="form-label">Creator ID</label>
                     <input
                         type='text'
                         name='creatorId'
+                        className="form-input"
                         onChange={this.handleChange}
                         value={this.props.userId}
                     />
-                    <label>Subject ID</label>
+                    <label className="form-label">Subject ID</label>
                     <input
                         type='text'
                         name='subjectId'
+                        className="form-input"
                         onChange={this.handleChange}
                         value={this.props.subjectId}
                     />
