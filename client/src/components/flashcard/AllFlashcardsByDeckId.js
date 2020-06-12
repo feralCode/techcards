@@ -3,12 +3,14 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import NewFlashcard from "./NewFlashcard";
 
 class AllFlashcardsByDeckId extends Component {
 
     state = {
         flashcards: [],
         showAnswer: false,
+        showNewCardForm: false
     }
 
     componentDidMount() {
@@ -31,6 +33,11 @@ class AllFlashcardsByDeckId extends Component {
     toggleAnswer = () => {
         const showAnswer = !this.state.showAnswer
         this.setState({showAnswer})
+    }
+
+    toggleNewCardForm = () => {
+        const showNewCardForm = !this.state.showNewCardForm
+        this.setState({showNewCardForm})
     }
 
     render() {
@@ -71,6 +78,15 @@ class AllFlashcardsByDeckId extends Component {
                         )
                     })}
                 </div>
+                {this.state.showNewCardForm
+                ?
+                    <div>
+                        <NewFlashcard deckId={this.props.deckId}/>
+                        <Button variant="outline-dark" onClick={this.toggleNewCardForm}>Hide Form</Button>
+                    </div>
+                    :
+                    <Button variant="outline-dark" onClick={this.toggleNewCardForm}>Add a Flashcard</Button>
+                }
             </div>
         );
     }
