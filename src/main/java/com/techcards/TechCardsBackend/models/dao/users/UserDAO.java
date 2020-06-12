@@ -22,17 +22,18 @@ public class UserDAO {
 
     public User getUserById(UUID userId) {
         User currentUser = jdbcTemplate.queryForObject("select * from users where user_id = ?", new Object[] {userId}, new UserMapper());
-        currentUser.setCreatedDecks(deckDAO.getAllDecksByCreatorId(userId));
-
-        List<Like> userLikes = likeDAO.getAllLikesByUserId(userId);
-        List<Deck> deckList = new ArrayList<>();
-
-        for (Like like : userLikes){
-            Deck deck = deckDAO.getDeckById(like.getDeckId());
-            deckList.add(deck);
-        }
-
-        currentUser.setLikedDecks(deckList);
+        //TODO: get list of liked and created decks for each user
+//        currentUser.setCreatedDecks(deckDAO.getAllDecksByCreatorId(userId));
+//
+//        List<Like> userLikes = likeDAO.getAllLikesByUserId(userId);
+//        List<Deck> deckList = new ArrayList<>();
+//
+//        for (Like like : userLikes){
+//            Deck deck = deckDAO.getDeckById(like.getDeckId());
+//            deckList.add(deck);
+//        }
+//
+//        currentUser.setLikedDecks(deckList);
 
         return currentUser;
     }
@@ -47,8 +48,6 @@ public class UserDAO {
             user.setId((UUID) row.get("user_id"));
             user.setName((String) row.get("user_name"));
             user.setAbout((String) row.get("user_about"));
-//            user.setCreatedDecks((List<Deck>) row.get("user_created_decks"));
-//            user.setLikedDecks((List<Deck>) row.get("user_liked_decks"));
 
             users.add(user);
         }

@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import Button from "react-bootstrap/Button";
 
 class SingleUser extends Component {
     state = {
         user: {
             name: '',
             about: ''
-        }
+        },
+        showEditForm: false
     }
 
     componentDidMount() {
@@ -43,32 +45,48 @@ class SingleUser extends Component {
         }
     }
 
+    toggleEditForm = () => {
+        const showEditForm = !this.state.showEditForm
+        this.setState({ showEditForm })
+    }
+
     render() {
         return (
             //TODO: get user's created decks and liked decks
             <div>
-                <div className="title">{this.state.user.name}</div>
-                <div className="about">{this.state.user.about}</div>
-
-                <div>
-                    <form onSubmit={this.onSubmit}>
-                        <label>Name</label>
-                        <input
-                            type='text'
-                            name='name'
-                            onChange={this.handleChange}
-                            value={this.state.user.name}
-                        />
-                        <label>About</label>
-                        <input
-                            type='text'
-                            name='about'
-                            onChange={this.handleChange}
-                            value={this.state.user.about}
-                        />
-                        <input type="submit" value="Save"/>
-                    </form>
-                </div>
+                {this.state.showEditForm
+                ?
+                    <div>
+                        <form onSubmit={this.onSubmit}>
+                            <label>Name</label>
+                            <input
+                                type='text'
+                                name='name'
+                                onChange={this.handleChange}
+                                value={this.state.user.name}
+                            />
+                            <label>About</label>
+                            <input
+                                type='text'
+                                name='about'
+                                onChange={this.handleChange}
+                                value={this.state.user.about}
+                            />
+                            <input type="submit" value="Save"/>
+                        </form>
+                        <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                            Back
+                        </Button>
+                    </div>
+                :
+                    <div>
+                        <div className="title">{this.state.user.name}</div>
+                        <div className="about">{this.state.user.about}</div>
+                        <Button variant="outline-dark" onClick={this.toggleEditForm} >
+                            Edit
+                        </Button>
+                    </div>
+                }
             </div>
         );
     }
