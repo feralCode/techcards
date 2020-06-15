@@ -1,6 +1,6 @@
 # TechCards
 
-TechCards provides learning and studying tools for software engineers to ace their next technical interview.
+TechCards provides learning and studying tools for software engineers preparing for technical interview.
 
 ### Important Links
 
