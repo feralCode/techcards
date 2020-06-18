@@ -4,7 +4,7 @@ TechCards provides learning and studying tools for software engineers preparing 
 
 ### Important Links
 
-* [Deployed App](https://mysterious-stream-35285.herokuapp.com/) via Heroku
+* [Deployed App](https://techcards.herokuapp.com/) via Heroku
 * [Trello Board](https://trello.com/b/gH2YZahL/techcards)
 * [Frontend GitHub](https://github.com/wrowston/techcards-frontend)
 
