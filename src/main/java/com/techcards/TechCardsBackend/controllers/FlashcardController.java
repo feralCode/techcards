@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/flashcards")
 public class FlashcardController {
@@ -46,8 +47,8 @@ public class FlashcardController {
     }
 
     @RequestMapping(value="/editFlashcard/{flashcardId}")
-    public Flashcard editFlashcard(@PathVariable("flashcardId") UUID flashcardId) {
-        Flashcard flashcard = flashcardService.getFlashcardById(flashcardId);
+    public Flashcard editFlashcard(@PathVariable("flashcardId") UUID flashcardId, @RequestBody Flashcard flashcard) {
+        flashcardService.getFlashcardById(flashcardId);
         return flashcard;
     }
 

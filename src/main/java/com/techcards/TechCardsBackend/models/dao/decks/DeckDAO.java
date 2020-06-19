@@ -3,6 +3,7 @@ package com.techcards.TechCardsBackend.models.dao.decks;
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.flashcards.FlashcardDAO;
 import com.techcards.TechCardsBackend.models.dao.likes.Like;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ public class DeckDAO {
     JdbcTemplate jdbcTemplate;
     FlashcardDAO flashcardDAO;
 
+    @Autowired
     public DeckDAO(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }

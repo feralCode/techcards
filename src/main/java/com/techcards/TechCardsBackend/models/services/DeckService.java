@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.services;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class DeckService {
 
     DeckDAO deckDAO;
 
+    @Autowired
     public DeckService(DeckDAO deckDAO) {
         this.deckDAO = deckDAO;
     }

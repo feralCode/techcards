@@ -37,10 +37,9 @@ public class SubjectController {
     }
 
     @RequestMapping(value="/editSubject/{subjectId}")
-    public String editSubject(@PathVariable("subjectId") UUID subjectId, Model m) {
-        Subject subject = subjectService.getSubjectById(subjectId);
-        m.addAttribute("command", subject);
-        return "editSubjectForm";
+    public Subject editSubject(@PathVariable("subjectId") UUID subjectId, @RequestBody Subject subject) {
+        subjectService.getSubjectById(subjectId);
+        return subject;
     }
 
     @RequestMapping(value = "/editSubject", method = RequestMethod.PUT)

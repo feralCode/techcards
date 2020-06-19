@@ -2,18 +2,21 @@ package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.services.DeckService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/deck")
 public class DeckController {
 
     private final DeckService deckService;
 
+    @Autowired
     public DeckController(DeckService deckService) {
         this.deckService = deckService;
     }
@@ -45,10 +48,9 @@ public class DeckController {
     }
 
     @RequestMapping(value="/editDeck/{deckId}")
-    public String editDeck(@PathVariable("deckId") UUID deckId, Model m) {
-        Deck deck = deckService.getDeckById(deckId);
-        m.addAttribute("command", deck);
-        return "editDeckForm";
+    public Deck editDeck(@PathVariable("deckId") UUID deckId, @RequestBody Deck deck) {
+        deckService.getDeckById(deckId);
+        return deck;
     }
 
     @RequestMapping(value = "/editDeck", method = RequestMethod.PUT)
