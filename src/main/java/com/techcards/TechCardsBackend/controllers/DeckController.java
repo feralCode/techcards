@@ -53,7 +53,7 @@ public class DeckController {
     }
 
     @RequestMapping(value = "/editDeck", method = RequestMethod.PUT)
-    public String updateDeck(@ModelAttribute("deck") Deck deck) {
+    public String updateDeck(@RequestBody Deck deck) {
         deckService.updateDeck(deck);
         return "redirect:/all";
     }

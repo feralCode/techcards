@@ -45,7 +45,7 @@ public class SubjectController {
     }
 
     @RequestMapping(value = "/editSubject", method = RequestMethod.PUT)
-    public String updateSubject(@ModelAttribute("subject") Subject subject) {
+    public String updateSubject(@RequestBody Subject subject) {
         subjectService.updateSubject(subject);
         return "redirect:/all";
     }

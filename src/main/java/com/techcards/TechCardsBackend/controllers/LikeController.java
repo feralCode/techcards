@@ -2,7 +2,6 @@ package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.likes.Like;
 import com.techcards.TechCardsBackend.models.services.LikeService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,14 +48,13 @@ public class LikeController {
     }
 
     @RequestMapping(value="/editLike/{likeId}")
-    public String editLike(@PathVariable("likeId") UUID likeId, Model m) {
-        Like like = likeService.getLikeById(likeId);
-        m.addAttribute("command", like);
-        return "editLikeForm";
+    public Like editLike(@PathVariable("likeId") UUID likeId, @RequestBody Like like) {
+        likeService.getLikeById(likeId);
+        return like;
     }
 
     @RequestMapping(value = "/editLike", method = RequestMethod.PUT)
-    public String updateLike(@ModelAttribute("like") Like like) {
+    public String updateLike(@RequestBody Like like) {
         likeService.updateLike(like);
         return "redirect:/all";
     }

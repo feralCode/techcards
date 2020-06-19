@@ -3,7 +3,6 @@ package com.techcards.TechCardsBackend.controllers;
 import com.techcards.TechCardsBackend.models.dao.users.User;
 import com.techcards.TechCardsBackend.models.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,13 +39,13 @@ public class UserController {
     }
 
     @RequestMapping(value="/editUser/{userId}")
-    public User editUser(@PathVariable("userId") UUID userId, User user) {
+    public User editUser(@PathVariable("userId") UUID userId, @RequestBody User user) {
         userService.getUserById(userId);
         return user;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.PUT)
-    public String updateUser(@ModelAttribute("user") User user) {
+    public String updateUser(@RequestBody User user) {
         userService.updateUser(user);
         return "redirect:/all";
     }
