@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.dao.subjects;
 
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ public class SubjectDAO {
     JdbcTemplate jdbcTemplate;
     DeckDAO deckDAO;
 
+    @Autowired
     public SubjectDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }

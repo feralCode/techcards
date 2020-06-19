@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.services;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.dao.flashcards.FlashcardDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class FlashcardService {
 
     FlashcardDAO flashcardDAO;
 
+    @Autowired
     public FlashcardService(FlashcardDAO flashcardDAO) {
         this.flashcardDAO = flashcardDAO;
     }

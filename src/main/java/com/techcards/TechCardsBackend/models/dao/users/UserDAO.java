@@ -4,6 +4,7 @@ import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.dao.decks.DeckDAO;
 import com.techcards.TechCardsBackend.models.dao.likes.Like;
 import com.techcards.TechCardsBackend.models.dao.likes.LikeDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ public class UserDAO {
     DeckDAO deckDAO;
     LikeDAO likeDAO;
 
+    @Autowired
     public UserDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }

@@ -2,17 +2,19 @@ package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import com.techcards.TechCardsBackend.models.services.SubjectService;
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/subject")
 public class SubjectController {
     private final SubjectService subjectService;
 
+    @Autowired
     public SubjectController(SubjectService subjectService) {
         this.subjectService = subjectService;
     }

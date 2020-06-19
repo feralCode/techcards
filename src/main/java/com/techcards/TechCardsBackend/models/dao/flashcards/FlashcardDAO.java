@@ -1,5 +1,6 @@
 package com.techcards.TechCardsBackend.models.dao.flashcards;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ public class FlashcardDAO {
 
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
     public FlashcardDAO(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }

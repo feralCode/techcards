@@ -2,6 +2,7 @@ package com.techcards.TechCardsBackend.models.services;
 
 import com.techcards.TechCardsBackend.models.dao.subjects.Subject;
 import com.techcards.TechCardsBackend.models.dao.subjects.SubjectDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class SubjectService {
 
     SubjectDAO subjectDAO;
 
+    @Autowired
     public SubjectService(SubjectDAO subjectDAO) {
         this.subjectDAO = subjectDAO;
     }

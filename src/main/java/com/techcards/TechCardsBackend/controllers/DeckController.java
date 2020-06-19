@@ -3,13 +3,12 @@ package com.techcards.TechCardsBackend.controllers;
 import com.techcards.TechCardsBackend.models.dao.decks.Deck;
 import com.techcards.TechCardsBackend.models.services.DeckService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
-//@CrossOrigin
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/deck")
 public class DeckController {

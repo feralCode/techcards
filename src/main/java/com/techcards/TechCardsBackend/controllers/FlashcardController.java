@@ -2,7 +2,7 @@ package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.flashcards.Flashcard;
 import com.techcards.TechCardsBackend.models.services.FlashcardService;
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +15,7 @@ public class FlashcardController {
 
     private final FlashcardService flashcardService;
 
+    @Autowired
     public FlashcardController(FlashcardService flashcardService) {
         this.flashcardService = flashcardService;
     }

@@ -2,18 +2,21 @@ package com.techcards.TechCardsBackend.controllers;
 
 import com.techcards.TechCardsBackend.models.dao.users.User;
 import com.techcards.TechCardsBackend.models.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserController {
 
     private final UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -37,10 +40,9 @@ public class UserController {
     }
 
     @RequestMapping(value="/editUser/{userId}")
-    public String editUser(@PathVariable("userId") UUID userId, Model m) {
-        User user = userService.getUserById(userId);
-        m.addAttribute("command", user);
-        return "editUserForm";
+    public User editUser(@PathVariable("userId") UUID userId, User user) {
+        userService.getUserById(userId);
+        return user;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.PUT)

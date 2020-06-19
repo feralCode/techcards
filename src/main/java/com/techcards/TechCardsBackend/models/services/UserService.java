@@ -3,6 +3,7 @@ package com.techcards.TechCardsBackend.models.services;
 import com.techcards.TechCardsBackend.models.dao.users.User;
 import com.techcards.TechCardsBackend.models.dao.users.User;
 import com.techcards.TechCardsBackend.models.dao.users.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.UUID;
 public class UserService {
     UserDAO userDAO;
 
+    @Autowired
     public UserService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
