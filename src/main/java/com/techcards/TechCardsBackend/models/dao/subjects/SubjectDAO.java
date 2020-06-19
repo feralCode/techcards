@@ -63,7 +63,7 @@ public class SubjectDAO {
         String sql = "update subjects set " +
                 "subject_name = '" + subject.getName() +
                 "', subject_imageurl = '" + subject.getImageUrl() +
-                "' where subject_id = " + subject.getId() + "";
+                "' where subject_id = '" + subject.getId() + "'";
 
         return jdbcTemplate.update(sql);
     }

@@ -108,7 +108,7 @@ public class DeckDAO {
                 "deck_name = '" + deck.getName() +
                 "', deck_creator_id = '" + deck.getCreatorId() +
                 "', deck_subject_id = '" + deck.getSubjectId() +
-                "' where deck_id = " + deck.getId() + "";
+                "' where deck_id = '" + deck.getId() + "'";
 
         return jdbcTemplate.update(sql);
     }

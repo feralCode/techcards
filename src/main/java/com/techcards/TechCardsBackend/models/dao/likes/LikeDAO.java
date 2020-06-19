@@ -93,7 +93,7 @@ public class LikeDAO {
         String sql = "update likes set " +
                 "like_user_id = '" + like.getUserId() +
                 "', like_deck_id = '" + like.getDeckId() +
-                "' where like_id = " + like.getLikeId() + "";
+                "' where like_id = '" + like.getLikeId() + "'";
 
         return jdbcTemplate.update(sql);
     }

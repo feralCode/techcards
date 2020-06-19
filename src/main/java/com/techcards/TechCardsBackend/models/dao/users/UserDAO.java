@@ -74,7 +74,7 @@ public class UserDAO {
         String sql = "update users set " +
                 "user_name = '" + user.getName() +
                 "', user_about = '" + user.getAbout() +
-                "' where user_id = " + user.getId() + "";
+                "' where user_id = '" + user.getId() + "'";
 
         return jdbcTemplate.update(sql);
     }
