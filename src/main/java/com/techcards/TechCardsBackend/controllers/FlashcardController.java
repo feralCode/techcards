@@ -54,7 +54,7 @@ public class FlashcardController {
     }
 
     @RequestMapping(value = "/editFlashcard", method = RequestMethod.PUT)
-    public String updateFlashcard(@ModelAttribute("flashcard") Flashcard flashcard) {
+    public String updateFlashcard(@RequestBody Flashcard flashcard) {
         flashcardService.updateFlashcard(flashcard);
         return "redirect:/all";
     }

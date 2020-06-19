@@ -76,7 +76,7 @@ public class FlashcardDAO {
                 "flashcard_clue = '" + flashcard.getClue() +
                 "', flashcard_answer = '" + flashcard.getAnswer() +
                 "', flashcard_deck_id = '" + flashcard.getDeckId() +
-                "' where flashcard_id = " + flashcard.getId() + "";
+                "' where flashcard_id = '" + flashcard.getId() + "'";
 
         return jdbcTemplate.update(sql);
     }
